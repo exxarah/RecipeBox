@@ -23,8 +23,10 @@
     - [ ] Upvoting comments for good additions
 - [ ] Refine search functionality
     - [ ] Search by list of ingredient in pantry?
+    - [ ] Add tags to recipes, for food genre, quick, etc
 - [ ] User pages
 - [ ] Make it secure
 - [ ] Add an API
 - [ ] Add documentation
 - [ ] Add tests
+- [ ] Host it on one of our servers?
