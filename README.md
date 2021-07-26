@@ -13,3 +13,4 @@ A collaborative recipe-sharing website, for people to share  their recipes, and 
 - https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
 - https://www.ericbernier.com/flask-restful-api
 - https://github.com/exxarah/FlaskAPITemplate
+- https://realpython.com/flask-blueprint/
