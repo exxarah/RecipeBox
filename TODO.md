@@ -4,7 +4,7 @@
 
 - [ ] Set up skeleton of the project
     - [ ] Database for recipes (with one simple sample recipe)
-    - [ ] Database for ingredients (to match the ingredients needed for the recipe)
+    - [X] Database for ingredients (to match the ingredients needed for the recipe)
     - [ ] Ability to navigate to this recipe page, as well as to the ingredient pages
 - [ ] Design Recipe/Ingredient pages
     - [ ] Find a colour palette I like
