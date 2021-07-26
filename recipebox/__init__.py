@@ -3,8 +3,6 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os
 
-from recipebox.general.general import general_bp
-
 # Database Setup
 db = SQLAlchemy()
 
@@ -30,7 +28,13 @@ def create_app(test_config=None):
 
     with app.app_context():
         # Database Setup
+
+        from recipebox.models.general import Ingredient, Recipe, RecipeIngredient
+
         db.init_app(app)
+        db.create_all()
+
+        from recipebox.general.general import general_bp
 
         # Blueprints Setup
         app.register_blueprint(general_bp, url_prefix='/')
