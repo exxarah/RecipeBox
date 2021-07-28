@@ -6,6 +6,7 @@ import os
 # Database Setup
 db = SQLAlchemy()
 
+
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
@@ -34,9 +35,12 @@ def create_app(test_config=None):
         db.init_app(app)
         db.create_all()
 
-        from recipebox.general.general import general_bp
+        from recipebox.general import general_bp
 
         # Blueprints Setup
         app.register_blueprint(general_bp, url_prefix='/')
 
         return app
+
+
+app = create_app()

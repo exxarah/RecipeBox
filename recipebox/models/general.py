@@ -20,7 +20,7 @@ class Ingredient(db.Model):
 
     def __init__(self, name):
         self.name = name
-        self.picture = os.path.join(*[current_app.config['STATIC_DIR'], "ingredients", name + ".png"])
+        self.picture = os.path.join(*[current_app.config['STATIC_DIR'], "ingredients.py", name + ".png"])
 
 
 class Recipe(db.Model):
@@ -30,7 +30,7 @@ class Recipe(db.Model):
     Attributes:
         name (str): name of recipe
         picture (str): path to picture
-        ingredients (RecipeIngredient): many to one relationship with RecipeIngredients
+        ingredients.py (RecipeIngredient): many to one relationship with RecipeIngredients
     """
     __tablename__ = "recipe"
     id = db.Column(db.Integer, primary_key=True)

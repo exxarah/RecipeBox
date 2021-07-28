@@ -126,3 +126,6 @@ dmypy.json
 
 # OSX Trash
 **/.DS_Store
+
+# Jetbrains
+.idea
