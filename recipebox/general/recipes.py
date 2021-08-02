@@ -28,13 +28,6 @@ def recipe_new():
 def recipe_id(id):
     selected_recipe = Recipe.query.get(id)
     if selected_recipe is None:
-<<<<<<< HEAD
         return render_template('404_notfound.html')
     else:
-=======
-        print('not foudn')
-        return render_template('404_notfound.html')
-    else:
-        print(selected_recipe.name, file=sys.stderr)
->>>>>>> d5b5999698ace19a0fbe9cf2c6caf18858ce31e3
         return render_template('recipe_view.html', recipe=selected_recipe)
