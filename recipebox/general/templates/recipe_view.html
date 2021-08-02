@@ -1,12 +1,12 @@
-{% extends "browse.html" %}
+{% extends "view.html" %}
 
-{% block browse_content %}
+{% block view_content %}
 
     <h1>{{ recipe.name }}</h1>
-        {% for ingredient in recipe.ingredients %}
-        <li>
-            <span class="field-value">{{ ingredient.quantity }} | {{ ingredient.unit }}</span>
-        </li>
-        {% endfor %}
+    {% for ingredient in recipe.ingredients %}
+    <li>
+        <span class="field-value">{{ ingredient.ingredient_object.name }} | {{ ingredient.quantity }} | {{ ingredient.unit }}</span>
+    </li>
+    {% endfor %}
 
 {% endblock %}

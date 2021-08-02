@@ -9,6 +9,14 @@
       <label for="name">Name:</label>
       <input type="text" name="name" id="name" required>
     </p>
+    <p>
+      <label for="ingredients">Ingredients:</label>
+      <select name="ingredients" id="ingredients" multiple>
+        {% for ingredient in ingredients %}
+          <option value="{{ ingredient.id }}">{{ ingredient.name }}</option>
+        {% endfor %}
+      </select>
+    </p>
     <input type="submit" name="recipe">
   </form>
 </div>

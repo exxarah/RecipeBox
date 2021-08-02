@@ -16,7 +16,7 @@ class Ingredient(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False)
     picture  = db.Column(db.String(150), nullable=False)
-    recipes = db.relationship('RecipeIngredient', backref="ingredient", lazy=True)
+    recipes = db.relationship('RecipeIngredient', backref="ingredient_object", lazy=True)
 
     def __init__(self, name):
         self.name = name
@@ -36,7 +36,7 @@ class Recipe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False)
     picture = db.Column(db.String(150), nullable=False)
-    ingredients = db.relationship('RecipeIngredient', backref="recipe", lazy=True)
+    ingredients = db.relationship('RecipeIngredient', backref="recipe_object", lazy=True)
 
     def __init__(self, name):
         self.name = name
