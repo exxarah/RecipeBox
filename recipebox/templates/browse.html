@@ -3,7 +3,12 @@
 {% block content %}
 
 <div class="container">
-  {% block browse_content %}{% endblock %}
+  <h1>{% block browse_title %}{% endblock %}</h1>
+  {% for item in browse_items %}
+    {% block browse_entry scoped %}{% endblock %}
+  {% endfor %}
+
+  {% block browse_new %}{% endblock %}
 </div>
 
 {% endblock %}

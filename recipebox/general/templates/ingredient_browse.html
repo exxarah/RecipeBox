@@ -1,17 +1,18 @@
 {% extends "browse.html" %}
 
-{% block browse_content %}
+{% block browse_title %}INGREDIENTS{% endblock %}
 
-    <h1>INGREDIENTS</h1>
-    {% for ingredient in ingredients %}
-      <ul id="{{ ingredient.name }}">
-        <li>
-          <span class="field-name">Ingredient:</span>
-          <span class="field-value"><a href="{{ url_for('general_bp.ingredient_id', id=ingredient.id) }}">{{ ingredient.name }}</a></span>
-        </li>
-      </ul>
-    {% endfor %}
+{% block browse_entry %}
 
-    <a href="{{ url_for('general_bp.ingredient_new') }}">Add A New Ingredient</a>
+    <ul id="{{ item.name }}">
+      <li>
+        <span class="field-name">Ingredient:</span>
+        <span class="field-value"><a href="{{ url_for('general_bp.ingredient_view', id=item.id) }}">{{ item.name }}</a></span>
+      </li>
+    </ul>
 
+{% endblock %}
+
+{% block browse_new %}
+<a href="{{ url_for('general_bp.ingredient_new') }}">Add A New Ingredient</a>
 {% endblock %}
