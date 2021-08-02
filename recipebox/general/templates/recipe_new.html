@@ -10,13 +10,54 @@
       <input type="text" name="name" id="name" required>
     </p>
     <p>
-      <label for="ingredients">Ingredients:</label>
-      <select name="ingredients" id="ingredients" multiple>
-        {% for ingredient in ingredients %}
-          <option value="{{ ingredient.id }}">{{ ingredient.name }}</option>
-        {% endfor %}
-      </select>
+
+      <table>
+        <tr>
+          <td>Ingredient</td>
+          <td>Amount</td>
+          <td>Unit</td>
+        </tr>
+        <tr>
+          <td>Ham</td>
+          <td>100</td>
+          <td>grams</td>
+        </tr>
+        <tr>
+          <td>Cheese</td>
+          <td>80</td>
+          <td>grams</td>
+        </tr>
+        <tr>
+          <td>
+            <select name="ingredients" id="ingredients">
+              {% for ingredient in ingredients %}
+              <!--
+                Use Bootstrap Input-Groups here, to select ingredients and add extra stuff.
+                Then an add button, that adds it to a list above. Then submit that list.
+                Look at this for implementation ideas? http://jsfiddle.net/no1_melman/dpjQY/
+              -->
+                <option value="{{ ingredient.id }}">{{ ingredient.name }}</option>
+              {% endfor %}
+            </select>
+          </td>
+          <td>
+            <input type="number" name="amount" value="amount" required>
+          </td>
+          <td>
+            <select name="unit" id="unit">
+              <option value="grams">grams</option>
+              <option value="litres">litres</option>
+              <option value="cups">cups</option>
+            </select>
+          </td>
+          <td>
+            <button type="add_ingredient" name="add_ingredient">Add</button>
+          </td>
+        </tr>
+      </table>
+
     </p>
+
     <input type="submit" name="recipe">
   </form>
 </div>

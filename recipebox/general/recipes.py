@@ -17,6 +17,7 @@ def recipe_new():
         recipe = Recipe(
             name=request.form["name"]
         )
+        # Instead of this, get a list of tuples of format (ingredient_id, amount, unit)
         for ingredient in request.form.getlist('ingredients'):
             print(ingredient)
             i = RecipeIngredient(
