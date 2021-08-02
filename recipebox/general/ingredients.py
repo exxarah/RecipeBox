@@ -6,7 +6,7 @@ from . import general_bp
 
 @general_bp.route('/ingredient/')
 def ingredient():
-    return render_template('ingredient_all.html', ingredients=Ingredient.query.all())
+    return render_template('ingredient_browse.html', ingredients=Ingredient.query.all())
 
 
 @general_bp.route('/ingredient/new/', methods=['GET', 'POST'])
@@ -24,4 +24,8 @@ def ingredient_new():
 
 @general_bp.route('/ingredient/<id>/')
 def ingredient_id(id):
-    return render_template('ingredient_all.html', ingredients=[Ingredient.query.get(id)])
+        selected_ingredient = Ingredient.query.get(id)
+        if selected_ingredient is None:
+            return render_template('404_notfound.html')
+        else:
+            return render_template('ingredient_view.html', ingredient=selected_ingredient)
