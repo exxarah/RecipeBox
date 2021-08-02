@@ -1,0 +1,18 @@
+{% extends "browse.html" %}
+
+{% block browse_content %}
+
+    <h1>RECIPES</h1>
+    {% for recipe in recipes %}
+      <ul id="{{ recipe.name }}">
+        <li>
+          <span class="field-name">Recipe:</span>
+          <span class="field-value"><a href="{{ url_for('general_bp.recipe_id', id=recipe.id) }}">{{ recipe.name }}</a></span>
+        </li>
+
+      </ul>
+    {% endfor %}
+
+    <a href="{{ url_for('general_bp.recipe_new') }}">Add A New Recipe</a>
+
+{% endblock %}

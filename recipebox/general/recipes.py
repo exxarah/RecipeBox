@@ -1,4 +1,5 @@
 from flask import render_template, url_for, request, redirect
+import sys
 from recipebox.models.general import Recipe
 from recipebox import db
 from . import general_bp
@@ -6,7 +7,8 @@ from . import general_bp
 
 @general_bp.route('/recipe/')
 def recipe():
-    return render_template('recipe_all.html', ingredients=Recipe.query.all())
+    selected_recipes = Recipe.query.all()
+    return render_template('recipe_browse.html', recipes=selected_recipes)
 
 
 @general_bp.route('/recipe/new/', methods=['GET', 'POST'])
@@ -22,6 +24,12 @@ def recipe_new():
         return render_template('recipe_new.html')
 
 
-@general_bp.route('/recipe/<recipe_id>/')
-def recipe_id(recipe_id):
-    return render_template('recipe_all.html', ingredients=[Recipe.query.get(recipe_id)])
+@general_bp.route('/recipe/<id>/')
+def recipe_id(id):
+    selected_recipe = Recipe.query.get(id)
+    if selected_recipe is None:
+        print('not foudn')
+        return render_template('404_notfound.html')
+    else:
+        print(selected_recipe.name, file=sys.stderr)
+        return render_template('recipe_view.html', recipe=selected_recipe)

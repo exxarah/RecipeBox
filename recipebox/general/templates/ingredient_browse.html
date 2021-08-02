@@ -1,8 +1,7 @@
-{% extends "base.html" %}
+{% extends "browse.html" %}
 
-{% block content %}
+{% block browse_content %}
 
-  <div class="container">
     <h1>INGREDIENTS</h1>
     {% for ingredient in ingredients %}
       <ul id="{{ ingredient.name }}">
@@ -12,6 +11,7 @@
         </li>
       </ul>
     {% endfor %}
-  </div>
+
+    <a href="{{ url_for('general_bp.ingredient_new') }}">Add A New Ingredient</a>
 
 {% endblock %}
