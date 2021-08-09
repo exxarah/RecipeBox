@@ -6,14 +6,13 @@
     - [X] Database for recipes (with one simple sample recipe)
     - [X] Database for ingredients (to match the ingredients needed for the recipe)
     - [X] Ability to navigate to this recipe page, as well as to the ingredient pages
-- [ ] Design Recipe/Ingredient pages
-    - [ ] Find a colour palette I like
-    - [ ] Use AdobeXD to make something that looks good
+- [X] Design Recipe/Ingredient pages
+    - [X] Find a colour palette I like
+    - [X] Use AdobeXD to make something that looks good
     - [ ] Make CSS to match
     - [ ] Make ingredient/recipe pages match the design
 - [ ] An Actual Website
-    - [ ] Set up a home page, with appropriate AdobeXD design
-        - [ ] Search bar
+    - [ ] Set up a home page, with appropriate AdobeXD design  
     - [ ] Set up user login
     - [ ] Let users add recipes
 
