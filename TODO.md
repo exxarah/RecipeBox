@@ -10,6 +10,7 @@
     - [X] Find a colour palette I like
     - [X] Use AdobeXD to make something that looks good
     - [ ] Make CSS to match
+    - [ ] Add an extra slightly more red colour as a mouseover accent, for buttons etc
     - [ ] Make ingredient/recipe pages match the design
 - [ ] An Actual Website
     - [ ] Set up a home page, with appropriate AdobeXD design  
