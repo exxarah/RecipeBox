@@ -5,7 +5,7 @@ general_bp = Blueprint(
     __name__,
     template_folder='templates',
     static_folder='static',
-    static_url_path='assets'
+    static_url_path='/general/static/'
 )
 
-from . import general, ingredients, recipes
+from . import general

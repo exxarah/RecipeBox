@@ -35,9 +35,11 @@ def create_app(test_config=None):
         db.init_app(app)
         db.create_all()
 
+        from recipebox.recipes import recipe_bp
         from recipebox.general import general_bp
 
         # Blueprints Setup
+        app.register_blueprint(recipe_bp, url_prefix='/')
         app.register_blueprint(general_bp, url_prefix='/')
 
         return app

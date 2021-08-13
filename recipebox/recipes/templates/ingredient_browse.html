@@ -1,0 +1,18 @@
+{% extends "browse.html" %}
+
+{% block browse_title %}INGREDIENTS{% endblock %}
+
+{% block browse_entry %}
+
+    <ul id="{{ item.name }}">
+      <li>
+        <span class="field-name">Ingredient:</span>
+        <span class="field-value"><a href="{{ url_for('recipe_bp.ingredient_view', id=item.id) }}">{{ item.name }}</a></span>
+      </li>
+    </ul>
+
+{% endblock %}
+
+{% block browse_new %}
+<a href="{{ url_for('recipe_bp.ingredient_new') }}">Add A New Ingredient</a>
+{% endblock %}
