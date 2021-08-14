@@ -5,10 +5,6 @@
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %}</title>
 
-    <!-- Less CSS Processor -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/recipebox.css') }}" />
-    <script src="//cdn.jsdelivr.net/npm/less@4.1.1" ></script>
-
     <!-- GFonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
@@ -28,15 +24,19 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/recipebox.css') }}" />
     {% endblock %}
   </head>
   <body>
     {% block navbar %}
-      {% include 'navbar.html' ignore missing %}
+        {% include 'navbar.html' ignore missing %}
     {% endblock %}
-    {% block content %}{% endblock %}
+    <div id="content" class="container-fluid">
+        {% block content %}{% endblock %}
+    </div>
     {% block footer %}
-      {% include 'footer.html' ignore missing %}
+        {% include 'footer.html' ignore missing %}
     {% endblock %}
   </body>
 </html>
