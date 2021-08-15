@@ -1,4 +1,65 @@
 #content {
-    background: url("../../res/background.png") no-repeat center center fixed;
-    background-size: cover;
+    position: relative;
+}
+
+#centered-box {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#big-logo {
+    color: #8e756a;
+    font-size: 120px;
+    text-align: center;
+    background-color: #f5edda;
+    margin-bottom: 20px;
+}
+
+#search {
+    position: relative;
+    background-color: #ebceb8;
+    color: #8e756a;
+    border: 7px solid #8e756a;
+    padding: 0px 0px 0px 10px;
+    font-size: 30px;
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+#search > * {
+    display: table-cell;
+    height: 100%;
+    padding: 0px 5px;
+}
+
+#search p {
+    margin: 0px;
+}
+
+#search #dropdownMenuButton {
+    margin-top: -7px;
+}
+
+#search #submit {
+    color: #ebceb8;
+    background-color: #8e756a;
+    padding: 0px 25px;
+    margin: 0px 0px 0px 10px;
+}
+
+#search #submit:hover {
+    color: #f5edda;
+}
+
+.dropdown * {
+    background-color: #f5edda;
+    color: #8e756a;
+    height: 100%;
+}
+
+.dropdown button:hover {
+    background-color: #8e756a;
 }

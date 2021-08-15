@@ -2,9 +2,9 @@
 
 #footer {
     background-color: #B17C58E6;    /* E6 = 90% opacity */
-    height: 50px;
+    height: 5vh;
     font-family: "Raleway", sans-serif;
-    color: #f5edda;
+    color: #ebceb8;
 }
 
 #social-links > *, #copyright * {

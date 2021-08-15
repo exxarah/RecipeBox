@@ -4,4 +4,9 @@ from . import general_bp
 
 @general_bp.route('/')
 def index():
-    return render_template('index.html')
+    # TODO: Add search functions
+    return render_template(
+        'index.html',
+        courses=["Breakfast", "Lunch", "Dinner"],
+        ingredients=["Cheese", "Milk", "Eggs", "Bread"]
+    )

@@ -2,11 +2,40 @@
 
 {% block head %}
     {{ super() }}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/general/index.css') }}" />
 {% endblock %}
 
-{% block browse_title %}INDEX{% endblock %}
+{% block title %}INDEX{% endblock %}
 
 {% block content %}
-    content
+    <div id="centered-box">
+        <div id="big-logo">
+            <i class="fas fa-pizza-slice"></i> RECIPEBOX
+        </div>
+        <div id="search">
+            <p>I'm in the mood for...</p>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Meal & Course
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {% for course in courses %}
+                        <a class="dropdown-item" href="#">{{ course }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <p>with...</p>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Ingredients
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {% for ingredient in ingredients %}
+                        <a class="dropdown-item" href="#">{{ ingredient }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <button id="submit"><i class="fas fa-arrow-right"></i></button>
+        </div>
+    </div>
 {% endblock %}

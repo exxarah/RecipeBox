@@ -8,13 +8,13 @@ button {
 
 #header {
     background-color: #B17C58E6;    /* E6 = 90% opacity */
-    height: 70px;
+    height: 8vh;
     font-family: "Raleway", sans-serif;
-    color: blanchedalmond;
+    color: #ebceb8;
 }
 
 #navbar * {
-    margin: 0px 30px;
+    margin: 0px 15px;
 }
 
 #user-info > *, #logo > * {

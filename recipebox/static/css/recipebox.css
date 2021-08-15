@@ -1,25 +1,35 @@
-/**
+/*
 body * {
     outline: black solid 2px;
 }
-**/
+*/
+
+html {
+    height: 100%;
+}
 
 body {
     background: url("../res/background.png") no-repeat center center fixed;
     background-size: cover;
     color: #f5edda;
+    height: 100%;
 }
 
 a {
     text-decoration: none;
-    color: #f5edda;
+    color: #ebceb8;
 }
 
 a:hover {
-    color: #e9cba7;
+    color: #f5edda;
 }
 
 .vertical-center {
     display: flex;
     align-items: center;
+}
+
+#content {
+    height: 87vh;
+    padding: 0px;
 }
