@@ -1,0 +1,39 @@
+#content {
+    height: 92vh;
+}
+
+#browse-container, #content-row {
+    height: 100%;
+}
+
+#search-col {
+    background-color: #ebceb8;
+    padding: 0px;
+    color: #8e756a;
+}
+
+#search-col > * {
+    padding: 10px 20px 0px 20px;
+}
+
+#search-col p {
+    font-size: 30px;
+    text-align: center;
+    margin: 0px;
+}
+
+#dropdownMenuButton {
+    width: 100%;
+    padding: 10px;
+}
+
+#footer-container {
+    margin: 0px;
+    padding: 0px;
+    width: inherit;
+}
+
+#footer {
+    width: 100%;
+    margin: 0px;
+}

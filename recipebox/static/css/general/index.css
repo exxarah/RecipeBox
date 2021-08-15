@@ -41,25 +41,16 @@
 
 #search #dropdownMenuButton {
     margin-top: -7px;
+    height: 100%;
 }
 
-#search #submit {
+#submit {
     color: #ebceb8;
     background-color: #8e756a;
     padding: 0px 25px;
     margin: 0px 0px 0px 10px;
 }
 
-#search #submit:hover {
+#submit:hover {
     color: #f5edda;
-}
-
-.dropdown * {
-    background-color: #f5edda;
-    color: #8e756a;
-    height: 100%;
-}
-
-.dropdown button:hover {
-    background-color: #8e756a;
 }

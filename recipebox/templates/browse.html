@@ -1,14 +1,73 @@
 {% extends "base.html" %}
 
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/browse.css') }}" />
+{% endblock %}
+
 {% block content %}
 
-<div class="container">
-  <h1>{% block browse_title %}{% endblock %}</h1>
-  {% for item in browse_items %}
-    {% block browse_entry scoped %}{% endblock %}
-  {% endfor %}
+<div id="browse-container" class="container-fluid">
+    <div id="content-row" class="row">
+        <div id="search-col" class="col-3">
+            <br/>
+            <p>I'm in the mood for...</p>
+            <br/>
+            <div><input type="text" placeholder="Search" /></div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Meal & Course
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {% for course in courses %}
+                        <a class="dropdown-item" href="#">{{ course }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ingredients
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {% for ingredient in ingredients %}
+                            <a class="dropdown-item" href="#">{{ ingredient }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Sort By
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {% for sort in sorts %}
+                            <a class="dropdown-item" href="#">{{ sort }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            <div id="tags">
+                <div class="tag-container">
+                    <div class="tag">
+                        easy
+                        <a href="#"><i class="far fa-times-circle"></i></a>
+                    </div>
+                    <div class="tag">
+                        quick
+                        <a href="#"><i class="far fa-times-circle"></i></a>
+                    </div>
+                </div>
+                <input type="text" placeholder="Tags" />
+            </div>
+            {% include 'footer.html' ignore missing %}
+        </div>
+        <div id="browse-entries" class="col">
+            {% for item in browse_items %}
+                {% block browse_entry scoped %}{% endblock %}
+            {% endfor %}
 
-  {% block browse_new %}{% endblock %}
+            {% block browse_new %}{% endblock %}
+        </div>
+    </div>
 </div>
-
 {% endblock %}
+
+{% block footer %}{% endblock %}
