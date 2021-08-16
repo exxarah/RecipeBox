@@ -20,6 +20,7 @@
 - [ ] CSS for adding recipe form
 - [ ] Update database to make sure it fits all the requirements of the designs/pages
 - [ ] Dummy data/accounts
+- [ ] Responsive changes to website
 
 ## Stretch Goals
 - [ ] Interactivity

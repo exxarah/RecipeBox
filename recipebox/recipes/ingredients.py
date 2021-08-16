@@ -1,5 +1,5 @@
 from flask import render_template, url_for, request, redirect
-from recipebox.models.general import Ingredient
+from recipebox.models.recipes import Ingredient
 from recipebox import db
 from . import recipe_bp
 

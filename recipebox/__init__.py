@@ -30,7 +30,7 @@ def create_app(test_config=None):
     with app.app_context():
         # Database Setup
 
-        from recipebox.models.general import Ingredient, Recipe, RecipeIngredient
+        from recipebox.models.recipes import Ingredient, Recipe, RecipeIngredient
 
         db.init_app(app)
         db.create_all()
