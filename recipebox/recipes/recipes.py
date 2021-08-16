@@ -7,7 +7,7 @@ from . import recipe_bp
 @recipe_bp.route('/recipe/')
 def recipe():
     selected_recipes = Recipe.query.all()
-    return render_template('recipe_browse.html', browse_items=selected_recipes)
+    return render_template('browse.html', browse_items=selected_recipes)
 
 
 @recipe_bp.route('/recipe/new/', methods=['GET', 'POST'])
