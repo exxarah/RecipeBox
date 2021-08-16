@@ -30,6 +30,7 @@ a:hover {
 }
 
 #content {
+    margin-top: 8vh;
     height: 87vh;
     padding: 0px;
 }
@@ -106,4 +107,29 @@ input {
 .show>.btn-secondary.dropdown-toggle  {
     background-color: #8e756a;
     color: #f5edda;
+}
+
+/* MASONRY STYLING */
+
+.masonry {
+    column-count: 4;
+    column-gap: 1em;
+    padding: 10px;
+}
+
+.masonry-item {
+    background-color: #ebceb8;
+    color: #8e756a;
+    display: inline-block;
+    margin: 0 0 1em;
+    width: 100%;
+}
+
+.masonry-item a {
+    color: inherit;
+}
+
+.masonry-item img {
+    object-fit: contain;
+    width: 100%;
 }

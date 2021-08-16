@@ -59,12 +59,25 @@
             </div>
             {% include 'footer.html' ignore missing %}
         </div>
-        <div id="browse-entries" class="col">
-            {% for item in browse_items %}
-                {% block browse_entry scoped %}{% endblock %}
-            {% endfor %}
-
-            {% block browse_new %}{% endblock %}
+        <div id="browse-entries" class="col-9 offset-3">
+            <div class="masonry">
+                {% for item in browse_items %}
+                    <div class="masonry-item">
+                        <div id="item-header">
+                            <p><i class="fas fa-clock"></i> 20mins</p>
+                            <p class="right-text"><i class="fas fa-heart"></i> 1k</p>
+                        </div>
+                        <img src="{{ url_for('static', filename='res/recipes/hamcheesesandwich.png') }}">
+                        <div id="item-footer">
+                            <i class="fas fa-user"></i>
+                            <div>
+                                <a href="{{ url_for('recipe_bp.recipe_view', id=item.id) }}"><h5>{{ item.name }}</h5></a>
+                                <p>By JaneUsername</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>
