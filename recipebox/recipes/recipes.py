@@ -39,5 +39,4 @@ def recipe_view(id):
     if selected_recipe is None:
         return render_template('404_notfound.html')
     else:
-        print(selected_recipe.ingredients)
-        return render_template('recipe_view.html', recipe=selected_recipe)
+        return render_template('view.html', recipe=selected_recipe)

@@ -3,12 +3,6 @@ from recipebox.models.general import Ingredient
 from recipebox import db
 from . import recipe_bp
 
-
-@recipe_bp.route('/ingredient/')
-def ingredient():
-    return render_template('ingredient_browse.html', browse_items=Ingredient.query.all())
-
-
 @recipe_bp.route('/ingredient/new/', methods=['GET', 'POST'])
 def ingredient_new():
     if request.method == 'POST':
@@ -20,12 +14,3 @@ def ingredient_new():
         return redirect(url_for("general_bp.ingredient_view", id=ingredient.id))
     else:
         return render_template('ingredient_new.html')
-
-
-@recipe_bp.route('/ingredient/<id>/')
-def ingredient_view(id):
-        selected_ingredient = Ingredient.query.get(id)
-        if selected_ingredient is None:
-            return render_template('404_notfound.html')
-        else:
-            return render_template('ingredient_view.html', ingredient=selected_ingredient)
