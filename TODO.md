@@ -9,13 +9,17 @@
 - [X] Design Recipe/Ingredient pages
     - [X] Find a colour palette I like
     - [X] Use AdobeXD to make something that looks good
-    - [ ] Make CSS to match
+    - [X] Make CSS to match
     - [ ] Add an extra slightly more red colour as a mouseover accent, for buttons etc
-    - [ ] Make ingredient/recipe pages match the design
+    - [X] Make ingredient/recipe pages match the design
 - [ ] An Actual Website
-    - [ ] Set up a home page, with appropriate AdobeXD design  
+    - [X] Set up a home page, with appropriate AdobeXD design  
     - [ ] Set up user login
-    - [ ] Let users add recipes
+    - [X] Let users add recipes
+- [ ] Fix form for adding recipes, add ingredients etc
+- [ ] CSS for adding recipe form
+- [ ] Update database to make sure it fits all the requirements of the designs/pages
+- [ ] Dummy data/accounts
 
 ## Stretch Goals
 - [ ] Interactivity
