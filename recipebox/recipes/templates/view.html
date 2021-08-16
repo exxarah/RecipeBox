@@ -8,10 +8,13 @@
 {% block title %}{{ recipe.name }}{% endblock %}
 
 {% block content %}
-    <div id="view-container" class="container-fluid">
+    <div id="view-container" class="container">
         <div id="recipe-info" class="row">
-            <div class="col-6"><img src="{{ url_for('static', filename='res/recipes/hamcheesesandwich.png') }}"></div>
             <div class="col-6">
+                <div class="img-box">
+                    <img src="{{ url_for('static', filename='res/recipes/hamcheesesandwich.png') }}"></div>
+                </div>
+            <div class="col vertical-center">
                 <h3>{{ recipe.name }}</h3>
                 <p class="subtitle">JaneUsername</p>
                 <div class="inline">
@@ -21,22 +24,38 @@
                         {% endfor %}
                         <p>(4)</p>
                     </div>
-                <div id="like-button">
-                    <i class="fas fa-heart"></i>
-                    <p>1k</p>
+                    <div id="like-button">
+                        <i class="fas fa-heart"></i>
+                        <p>1k</p>
+                    </div>
                 </div>
+                <div id="description">
+                    {{ recipe.description }}
                 </div>
             </div>
         </div>
         <div id="recipe-procedure" class="row">
-            <div class="col-6">
+            <div id="ingredient-list" class="col-6">
                 <h3>Ingredients</h3>
+                <ul class="list-group list-group-flush">
+                    {% for ingredient in recipe.ingredients %}
+                    <li class="list-group-item">
+                        {{ ingredient.ingredient_object.name }} | {{ ingredient.quantity }} | {{ ingredient.unit }}
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
-            <div class="col-6">
+            <div id="method-list" class="col-6">
                 <h3>Method</h3>
+                <ul class="list-group list-group-flush">
+                    {% for ingredient in recipe.ingredients %}
+                    <li class="list-group-item">
+                        {{ ingredient.ingredient_object.name }} | {{ ingredient.quantity }} | {{ ingredient.unit }}
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
-        <div id="comment-input"></div>
-        <div id="comment-view"></div>
+        <div id="comments"></div>
     </div>
 {% endblock %}

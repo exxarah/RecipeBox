@@ -13,6 +13,7 @@ body {
     background-size: cover;
     color: #f5edda;
     height: 100%;
+    font-family: "Raleway", sans-serif;
 }
 
 a {
@@ -25,8 +26,8 @@ a:hover {
 }
 
 .vertical-center {
-    display: flex;
-    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 #content {
