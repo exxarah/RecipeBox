@@ -28,9 +28,9 @@ def recipe_new():
             recipe.ingredients.append(i)
         db.session.add(recipe)
         db.session.commit()
-        return redirect(url_for("general_bp.recipe_view", id=recipe.id))
+        return redirect(url_for("recipe_bp.recipe_view", id=recipe.id))
     else:
-        return render_template('recipe_new.html', ingredients=Ingredient.query.all())
+        return render_template('new_recipe.html', ingredients=Ingredient.query.all())
 
 
 @recipe_bp.route('/recipe/<id>/')

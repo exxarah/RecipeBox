@@ -17,8 +17,8 @@
     - [ ] Set up user login
     - [X] Let users add recipes
 - [ ] Fix form for adding recipes, add ingredients etc
-- [ ] CSS for adding recipe form
-- [ ] Update database to make sure it fits all the requirements of the designs/pages
+- [X] CSS for adding recipe form
+- [X] Update database to make sure it fits all the requirements of the designs/pages
 - [ ] Dummy data/accounts
 - [ ] Responsive changes to website
 

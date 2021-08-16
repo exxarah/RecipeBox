@@ -5,6 +5,12 @@ import os
 from recipebox import db
 from recipebox.models.users import Like
 
+tags = db.Table(
+    'tags',
+    db.Column('tag_id', db.Integer, db.ForeignKey('tag.id'), primary_key=True),
+    db.Column('recipe_id', db.Integer, db.ForeignKey('recipe.id'), primary_key=True)
+)
+
 class Ingredient(db.Model):
     """
     Ingredient Model Data.
@@ -45,10 +51,12 @@ class Recipe(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     likes = db.relationship('Like', backref="recipe_object", lazy=True)
     ratings = db.relationship('Rating', backref="recipe_object", lazy=True)
+    tags  =  db.relationship('Tag', secondary=tags, lazy='subquery', backref=db.backref('recipes', lazy=True))
 
     def __init__(self, name):
         self.name = name
         self.picture = os.path.join(*[current_app.config['STATIC_DIR'], "recipes", name + ".png"])
+        self.user_id = 0
 
 class RecipeIngredient(db.Model):
     """
@@ -96,3 +104,16 @@ class RecipeProcedure(db.Model):
         self.recipe_id = recipe
         self.recipe_step = step
         self.procedure = procedure
+
+class Tag(db.Model):
+    """
+    Tag Model Data
+
+    Tags used for sorting/filtering recipes.
+
+    Attributes:
+        name (str): name of tag
+    """
+    __tablename__ = "tag"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
