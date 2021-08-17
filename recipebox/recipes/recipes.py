@@ -14,10 +14,16 @@ def recipe():
 def recipe_new():
     if request.method == 'POST':
         recipe = Recipe(
-            name=request.form["name"]
+            name=request.form["recipe_name"],
+            picture="hamcheesesandwich.png",
+            cook_time = request.form["recipe_cooktime"]
         )
         # Instead of this, get a list of tuples of format (ingredient_id, amount, unit)
-        for ingredient in request.form.getlist('ingredients'):
+        ingredients_amount = request.form["recipe_amount"].split(',')
+        ingredients_unit = request.form["recipe_unit"].split(',')
+        ingredients_ingredients = request.form["recipe_ingredients"].split(',')
+        print(ingredients_amount)
+        for ingredient in request.form.getlist('recipe_ingredients'):
             print(ingredient)
             i = RecipeIngredient(
                 recipe=recipe.id,

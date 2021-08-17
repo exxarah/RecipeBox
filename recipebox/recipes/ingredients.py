@@ -11,6 +11,6 @@ def ingredient_new():
         )
         db.session.add(ingredient)
         db.session.commit()
-        return redirect(url_for("general_bp.ingredient_view", id=ingredient.id))
+        return redirect(url_for("recipe_bp.recipe", id=ingredient.id))
     else:
-        return render_template('ingredient_new.html')
+        return render_template('new_ingredient.html')

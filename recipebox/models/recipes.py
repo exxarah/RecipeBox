@@ -37,6 +37,7 @@ class Recipe(db.Model):
     Attributes:
         name (str): name of recipe
         picture (str): path to picture
+        cook_time (int): time to make, in minutes
         ingredients (RecipeIngredient): many to one relationship with RecipeIngredients
         procedures (RecipeProcedure): many to one relationship with RecipeProcedures
         poster (User): one to many relationship with Users
@@ -46,6 +47,7 @@ class Recipe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False)
     picture = db.Column(db.String(150), nullable=False)
+    cook_time = db.Column(db.Integer, nullable=False)
     ingredients = db.relationship('RecipeIngredient', backref="recipe_object", lazy=True)
     procedures = db.relationship('RecipeProcedure', backref="recipe_object", lazy=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -53,9 +55,10 @@ class Recipe(db.Model):
     ratings = db.relationship('Rating', backref="recipe_object", lazy=True)
     tags  =  db.relationship('Tag', secondary=tags, lazy='subquery', backref=db.backref('recipes', lazy=True))
 
-    def __init__(self, name):
+    def __init__(self, name, picture, cook_time):
         self.name = name
-        self.picture = os.path.join(*[current_app.config['STATIC_DIR'], "recipes", name + ".png"])
+        self.picture = picture
+        self.cook_time = cook_time
         self.user_id = 0
 
 class RecipeIngredient(db.Model):
