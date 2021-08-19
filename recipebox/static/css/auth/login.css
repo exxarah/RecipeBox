@@ -1,0 +1,18 @@
+#content {
+    position: relative;
+    height: 87vh;
+}
+
+#centered-box {
+    background-color: #f5edda;
+    padding: 50px;
+    color: #8e756a;
+}
+
+#big-logo {
+    color: #8e756a;
+    font-size: 50px;
+    text-align: center;
+    background-color: #f5edda;
+    margin-bottom: 20px;
+}

@@ -17,3 +17,8 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(APP_DIR, 'recipebox.db')
 SQLALCHEMY_BINDS = {}
 DATABASE_CONNECT_OPTIONS = {}
+
+# Auth Stuff
+SECRET_KEY = 'L0L_PLZ_N0_HAX'
+LOGIN_DISABLED = False
+TESTING = False

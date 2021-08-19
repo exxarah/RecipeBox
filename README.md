@@ -15,6 +15,7 @@ A collaborative recipe-sharing website, for people to share  their recipes, and 
 - [Used to understand Flask Blueprgints](https://realpython.com/flask-blueprint/)
 - [Datalist Customisation](https://dev.to/siddev/customise-datalist-45p0)
 - [Understanding Click Event Order for Custom Datalist](https://stackoverflow.com/questions/5614773/seems-that-onblur-of-one-element-is-overriding-the-onclick-of-another)
+- [Auth Reference](https://realpython.com/token-based-authentication-with-flask/)
 
 ## Design Resources
 - [Bootstrap AdobeXD Template](https://www.adobe.com/nz/products/xd/features/ui-kits.html)

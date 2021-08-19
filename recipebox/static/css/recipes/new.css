@@ -43,24 +43,3 @@ input[type="file"] {
   background-color: #8e756a;
   color: #f5edda;
 }
-
-/* TEXT INPUT STYLING */
-::-webkit-input-placeholder {
-   text-align: left;
-   vertical-align: middle;
-}
-
-:-moz-placeholder { /* Firefox 18- */
-   text-align: left;
-   vertical-align: middle;
-}
-
-::-moz-placeholder {  /* Firefox 19+ */
-   text-align: left;
-   vertical-align: middle;
-}
-
-:-ms-input-placeholder {
-   text-align: left;
-   vertical-align: middle;
-}

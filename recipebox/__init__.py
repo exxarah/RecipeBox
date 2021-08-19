@@ -1,5 +1,6 @@
 """ MAIN FILE """
 from flask import Flask
+from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 import os
 
@@ -31,16 +32,27 @@ def create_app(test_config=None):
         # Database Setup
 
         from recipebox.models.recipes import Ingredient, Recipe, RecipeIngredient
+        from recipebox.models.auth import User
 
         db.init_app(app)
         db.create_all()
 
         from recipebox.recipes import recipe_bp
         from recipebox.general import general_bp
+        from recipebox.auth import auth_bp
 
         # Blueprints Setup
         app.register_blueprint(recipe_bp, url_prefix='/')
         app.register_blueprint(general_bp, url_prefix='/')
+        app.register_blueprint(auth_bp, url_prefix='/auth/')
+
+        login_manager = LoginManager()
+        login_manager.login_view = 'auth_bp.login'
+        login_manager.init_app(app)
+
+        @login_manager.user_loader
+        def load_user(user_id):
+            return User.query.get(int(user_id))
 
         return app
 

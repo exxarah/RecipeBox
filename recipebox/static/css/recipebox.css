@@ -37,6 +37,18 @@ a:hover {
     min-height: 87vh;
 }
 
+#centered-box {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.flash-box {
+    background-color: coral;
+    color: #f5edda;
+}
+
 /* TEXT INPUT STYLING */
 input {
     width: 100%;
@@ -148,4 +160,25 @@ input,
 .masonry-item img {
     object-fit: contain;
     width: 100%;
+}
+
+/* TEXT INPUT STYLING */
+::-webkit-input-placeholder {
+   text-align: left;
+   vertical-align: middle;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: left;
+   vertical-align: middle;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: left;
+   vertical-align: middle;
+}
+
+:-ms-input-placeholder {
+   text-align: left;
+   vertical-align: middle;
 }
