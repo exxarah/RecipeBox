@@ -16,7 +16,7 @@
     - [X] Set up a home page, with appropriate AdobeXD design  
     - [ ] Set up user login
     - [X] Let users add recipes
-- [ ] Fix form for adding recipes, add ingredients etc
+- [X] Fix form for adding recipes, add ingredients etc
 - [X] CSS for adding recipe form
 - [X] Update database to make sure it fits all the requirements of the designs/pages
 - [ ] Dummy data/accounts

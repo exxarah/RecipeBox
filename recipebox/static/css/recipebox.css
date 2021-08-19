@@ -104,6 +104,7 @@ input,
     background-color: #f5edda;
     color: #8e756a;
     border-color: #8e756a;
+    cursor: pointer;
 }
 
 .btn:hover,
@@ -117,6 +118,11 @@ input,
 .show>.btn-secondary.dropdown-toggle  {
     background-color: #8e756a;
     color: #f5edda;
+}
+
+.no-hover {
+    background-color: #f5edda !important;
+    color: #8e756a !important;
 }
 
 /* MASONRY STYLING */

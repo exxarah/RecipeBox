@@ -29,6 +29,28 @@ class Ingredient(db.Model):
         self.name = name
         self.picture = os.path.join(*[current_app.config['STATIC_DIR'], "ingredients.py", name + ".png"])
 
+    @classmethod
+    def search_name(cls, query):
+        if not query or not isinstance(query, str):
+            raise ValueError("Missing query arg as a string")
+        search_query = "%{0}%".format(query)
+        return cls.query.filter(cls.name.ilike(search_query)).all()
+
+    @classmethod
+    def select(cls, query):
+        if not query or not isinstance(query, str):
+            raise ValueError("Missing query arg as a string")
+        ingredient = cls.query.filter(cls.name == query).first()
+        # If we managed to select an ingredient, return it
+        if ingredient:
+            return ingredient
+        # If we get here, we need to create a new ingredient and return it
+        ingredient = Ingredient(
+            name=query
+        )
+        db.session.add(ingredient)
+        db.session.flush()
+        return ingredient
 
 class Recipe(db.Model):
     """

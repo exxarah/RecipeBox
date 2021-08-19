@@ -12,7 +12,7 @@
 	<div id="new-container" class="container">
 		<h1>NEW RECIPE</h1>
 		<br>
-		<form action="/recipe/new/" method="post">
+		<form action="/recipe/new/" method="post" enctype="multipart/form-data">
 			<div class="form-group row">
 				<label for="recipe_name" class="col-sm-2 vertical-center">Name</label>
 				<div class="col-sm-10">
@@ -40,12 +40,14 @@
 						<div class="input-group recipe-ingredients">
 							<input type="number" name="recipe_amount[]" class="form-control" placeholder="Amount">
 							<input type="text" name="recipe_unit[]" class="form-control" placeholder="Unit">
-							<select class="custom-select" name="recipe_ingredients[]">
-								<option selected>Ingredient</option>
-								{% for ingredient in ingredients %}
-									<option value="{{ ingredient.id }}">{{ ingredient.name }}</option>
-								{% endfor %}
-							</select>
+							<div class="">
+								<input name="recipe_ingredients[]" list="" class="form-control" id="ingredients-input" value="Ingredient">
+								<datalist id="ingredients" class="dropdown-menu">
+									{% for ingredient in ingredients %}
+										<option class="dropdown-item">{{ ingredient.name }}</option>
+									{% endfor %}
+								</datalist>
+							</div>
 							<div class="input-group-append">
 								<input type="button" value="x" id="remove-ingredient-btn">
 							</div>
@@ -78,5 +80,6 @@
 {% block script %}
 
 	<script src="{{ url_for('static', filename='js/recipe_new_form.js') }}" charset="utf-8"></script>
+	<script src="{{ url_for('static', filename='js/new-datalist.js') }}" charset="utf-8"></script>
 
 {% endblock %}

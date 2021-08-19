@@ -13,6 +13,8 @@ A collaborative recipe-sharing website, for people to share  their recipes, and 
 - [Flask Tutorial, goes deeper into database design, and api access](https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask)
 - [A Flask project I was working on a while ago, used as a memory jogger](https://github.com/exxarah/FlaskAPITemplate)
 - [Used to understand Flask Blueprgints](https://realpython.com/flask-blueprint/)
+- [Datalist Customisation](https://dev.to/siddev/customise-datalist-45p0)
+- [Understanding Click Event Order for Custom Datalist](https://stackoverflow.com/questions/5614773/seems-that-onblur-of-one-element-is-overriding-the-onclick-of-another)
 
 ## Design Resources
 - [Bootstrap AdobeXD Template](https://www.adobe.com/nz/products/xd/features/ui-kits.html)
