@@ -1,5 +1,5 @@
 #content {
-  height: 87vh;
+  min-height: 87vh;
 }
 
 #new-container {

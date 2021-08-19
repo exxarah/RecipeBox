@@ -13,21 +13,21 @@
 			<i class="fas fa-pizza-slice"></i> RECIPEBOX
 		</div>
 		<form id="search">
-			<p>I'm in the mood for...</p>
-			<select name="search-courses" class="dropdown-toggle" aria-label="Meal & Courses">
+			<p class="inline">I'm in the mood for...</p>
+			<select name="search-courses" class="dropdown-toggle inline" aria-label="Meal & Courses">
 				<option class="dropdown-item" selected>Meal & Courses</option>
 				{% for course in courses %}
 					<option class="dropdown-item" value="{{ course }}">{{ course }}</option>
 				{% endfor %}
 			</select>
-			<p>with...</p>
-			<select name="search-ingredients" class="dropdown-toggle" aria-label="Ingredients">
+			<p class="inline">with...</p>
+			<select name="search-ingredients" class="dropdown-toggle inline" aria-label="Ingredients">
 				<option class="dropdown-item" selected>Ingredients</option>
 				{% for ingredient in ingredients %}
 					<option class="dropdown-item" value="{{ ingredient }}">{{ ingredient }}</option>
 				{% endfor %}
 			</select>
-			<button type="submit" id="submit"><i class="fas fa-arrow-right"></i></button>
+			<button type="submit" id="submit" class="inline"><i class="fas fa-arrow-right"></i></button>
 		</form>
 	</div>
 {% endblock %}

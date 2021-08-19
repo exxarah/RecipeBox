@@ -9,16 +9,40 @@
 
 {% block content %}
 	<div class="container" id="profile-container">
-		<div id="recipe-info" class="row">
+		<div class="row">
 			<div class="col-6">
 				<div class="img-box">
-					<img src="{{ url_for('static', filename='res/auth/' + 'goora.jpg') }}"></div>
+					<img src="{{ url_for('static', filename='res/auth/' + 'goora.jpg') }}">
+				</div>
 			</div>
 			<div class="col vertical-center">
 				<h3>{{ user.username }}</h3>
 				<p class="subtitle">Joined {{ user.registered_on }}</p>
 				<div id="description">
 					It's a bio
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-6">
+				<h3 class="center-text">Recently Added Recipes</h3>
+				<div class="container">
+					{% for recipe in user.recipes %}
+						<a class="row recipe-entry" href="{{ url_for('recipe_bp.recipe_view', id=recipe.id) }}">
+							<div class="col-3">
+								<div class="img-box">
+									<img src="{{ url_for('static', filename='res/recipes/' + recipe.picture) }}">
+								</div>
+							</div>
+							<div class="col-9">
+								<span>{{ recipe.name }}</span>
+								<br>
+								<span class="inline"><i class="fas fa-clock"></i> {{ recipe.cook_time }}mins</span>
+								<span class="inline"><i class="fas fa-heart"></i> 1k</span>
+							</div>
+						</a>
+					{% endfor %}
 				</div>
 			</div>
 		</div>
