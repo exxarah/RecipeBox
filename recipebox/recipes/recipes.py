@@ -18,19 +18,19 @@ def recipe_new():
             picture="hamcheesesandwich.png",
             cook_time = request.form["recipe_cooktime"]
         )
-        # Instead of this, get a list of tuples of format (ingredient_id, amount, unit)
-        ingredients_amount = request.form["recipe_amount"].split(',')
-        ingredients_unit = request.form["recipe_unit"].split(',')
-        ingredients_ingredients = request.form["recipe_ingredients"].split(',')
+
+        ingredients_amount = request.form["recipe_amount"].split(',')[:-1]
+        ingredients_unit = request.form["recipe_unit"].split(',')[:-1]
+        ingredients_ingredients = request.form["recipe_ingredients"].split(',')[:-1]
         print(ingredients_amount)
-        for ingredient in request.form.getlist('recipe_ingredients'):
-            print(ingredient)
+        for i in range(len(ingredients_amount)):
             i = RecipeIngredient(
                 recipe=recipe.id,
-                ingredient=ingredient,
-                quantity=100,
-                unit="grams"
+                ingredient=ingredients_ingredients[i],
+                quantity=ingredients_amount[i],
+                unit=ingredients_unit[i]
             )
+            print(i)
             recipe.ingredients.append(i)
         db.session.add(recipe)
         db.session.commit()

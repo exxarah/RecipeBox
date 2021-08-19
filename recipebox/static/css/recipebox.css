@@ -44,6 +44,7 @@ input {
 
 input,
 .btn,
+.input-group-text,
 .form-control,
 .form-control:focus {
     border: 1px solid #8e756a;

@@ -1,61 +1,61 @@
 {% extends "base.html" %}
 
 {% block head %}
-    {{ super() }}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/recipes/view.css') }}" />
+	{{ super() }}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/recipes/view.css') }}"/>
 {% endblock %}
 
 {% block title %}{{ recipe.name }}{% endblock %}
 
 {% block content %}
-    <div id="view-container" class="container">
-        <div id="recipe-info" class="row">
-            <div class="col-6">
-                <div class="img-box">
-                    <img src="{{ url_for('static', filename='res/recipes/hamcheesesandwich.png') }}"></div>
-                </div>
-            <div class="col vertical-center">
-                <h3>{{ recipe.name }}</h3>
-                <p class="subtitle">JaneUsername</p>
-                <div class="inline">
-                    <div id="star-score">
-                        {% for i in range(5) %}
-                            <i class="fas fa-star"></i>
-                        {% endfor %}
-                        <p>(4)</p>
-                    </div>
-                    <div id="like-button">
-                        <i class="fas fa-heart"></i>
-                        <p>1k</p>
-                    </div>
-                </div>
-                <div id="description">
-                    {{ recipe.description }}
-                </div>
-            </div>
-        </div>
-        <div id="recipe-procedure" class="row">
-            <div id="ingredient-list" class="col-6">
-                <h3>Ingredients</h3>
-                <ul class="list-group list-group-flush">
-                    {% for ingredient in recipe.ingredients %}
-                    <li class="list-group-item">
-                        {{ ingredient.ingredient_object.name }} | {{ ingredient.quantity }} | {{ ingredient.unit }}
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div id="method-list" class="col-6">
-                <h3>Method</h3>
-                <ul class="list-group list-group-flush">
-                    {% for ingredient in recipe.ingredients %}
-                    <li class="list-group-item">
-                        {{ ingredient.ingredient_object.name }} | {{ ingredient.quantity }} | {{ ingredient.unit }}
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-        <div id="comments"></div>
-    </div>
+	<div id="view-container" class="container">
+		<div id="recipe-info" class="row">
+			<div class="col-6">
+				<div class="img-box">
+					<img src="{{ url_for('static', filename='res/recipes/hamcheesesandwich.png') }}"></div>
+			</div>
+			<div class="col vertical-center">
+				<h3>{{ recipe.name }}</h3>
+				<p class="subtitle">JaneUsername</p>
+				<div class="inline">
+					<div id="star-score">
+						{% for i in range(5) %}
+							<i class="fas fa-star"></i>
+						{% endfor %}
+						<p>(4)</p>
+					</div>
+					<div id="like-button">
+						<i class="fas fa-heart"></i>
+						<p>1k</p>
+					</div>
+				</div>
+				<div id="description">
+					{{ recipe.description }}
+				</div>
+			</div>
+		</div>
+		<div id="recipe-procedure" class="row">
+			<div id="ingredient-list" class="col-6">
+				<h3>Ingredients</h3>
+				<ul class="list-group list-group-flush">
+					{% for ingredient in recipe.ingredients %}
+						<li class="list-group-item">
+							{{ ingredient.quantity }} | {{ ingredient.unit }} | {{ ingredient.ingredient_object.name }}
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div id="method-list" class="col-6">
+				<h3>Method</h3>
+				<ul class="list-group list-group-flush">
+					{% for procedure in recipe.procedures %}
+						<li class="list-group-item">
+							{{ procedure.recipe_step }} | {{ procedure.procedure }}
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		<div id="comments"></div>
+	</div>
 {% endblock %}

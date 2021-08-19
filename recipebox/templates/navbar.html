@@ -1,17 +1,17 @@
 <!-- Navbar stuck at top -->
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/navbar.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/navbar.css') }}"/>
 <div class="container-fluid fixed-top">
-  <div id="header" class="row">
-    <div id="logo" class="col-12 col-md-2 justify-content-center justify-content-md-start vertical-center">
-        <i class="fas fa-pizza-slice"></i> RECIPEBOX
-    </div>
-    <div id="navbar" class="col vertical-center d-flex">
-        <button><a href="{{ url_for('general_bp.index') }}">HOME</a></button>
-        <button><a href="{{ url_for('recipe_bp.recipe') }}">EXPLORE</a></button>
-    </div>
-    <div id="user-info" class="col-md-2 vertical-center justify-content-end d-flex">
-        <button><a href=""><i class="fas fa-bell"></i></a></button>
-        <button><a href=""><i class="fas fa-user"></i></a></button>
-    </div>
-  </div>
+	<div id="header" class="row">
+		<div id="logo" class="col-12 col-md-2 justify-content-center justify-content-md-start vertical-center">
+			<i class="fas fa-pizza-slice"></i> RECIPEBOX
+		</div>
+		<div id="navbar" class="col vertical-center d-flex">
+			<button><a href="{{ url_for('general_bp.index') }}">HOME</a></button>
+			<button><a href="{{ url_for('recipe_bp.recipe') }}">EXPLORE</a></button>
+		</div>
+		<div id="user-info" class="col-md-2 vertical-center justify-content-end d-flex">
+			<button><a href=""><i class="fas fa-bell"></i></a></button>
+			<button><a href=""><i class="fas fa-user"></i></a></button>
+		</div>
+	</div>
 </div>

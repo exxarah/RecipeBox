@@ -1,86 +1,112 @@
 {% extends "base.html" %}
 
 {% block head %}
-    {{ super() }}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/recipes/new.css') }}" />
+	{{ super() }}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/recipes/new.css') }}"/>
 {% endblock %}
 
 {% block title %}NEW RECIPE{% endblock %}
 
 {% block content %}
 
-<div id="new-container" class="container">
-  <h1>NEW RECIPE</h1>
-  <br>
-  <form action="/recipe/new/" method="post">
-    <div class="form-group row">
-      <label for="recipe_name" class="col-sm-2 vertical-center">Name</label>
-      <div class="col-sm-10">
-        <input type="text" id="recipe_name" name="recipe_name" placeholder="Recipe Name">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="recipe_cooktime" class="col-sm-2 vertical-center">Cook Time</label>
-      <div class="col-sm-10">
-        <input type="number" id="recipe_cooktime" name="recipe_cooktime" placeholder="Cook Time (in minutes)">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-sm-2 vertical-center">Image</label>
-      <div class="col-sm-10 custom-file">
-        <input type="file" class="custom-file-input" name="recipe_image" id="recipe_image">
-        <label class="col-sm-2 custom-file-label" for="recipe_image">Choose file...</label>
-      </div>
-    </div>
-    <div class="form-group row">
-      <input type="hidden" name="recipe_amount" id="recipe_amount" value="">
-      <input type="hidden" name="recipe_unit" id="recipe_unit" value="">
-      <input type="hidden" name="recipe_ingredients" id="recipe_ingredients" value="">
-      <label for="recipe_ingredients" class="col-sm-2 vertical-center">Ingredients</label>
-      <div class="col-sm-10">
-        <table id="ingredientsTable">
-          <thead>
-            <tr>
-              <td id="table-amount">Amount</td>
-              <td id="table-unit">Unit</td>
-              <td id="table-ingredient">Ingredient</td>
-            </tr>
-          </thead>
-          <tbody>
+	<div id="new-container" class="container">
+		<h1>NEW RECIPE</h1>
+		<br>
+		<form action="/recipe/new/" method="post">
+			<div class="form-group row">
+				<label for="recipe_name" class="col-sm-2 vertical-center">Name</label>
+				<div class="col-sm-10">
+					<input type="text" id="recipe_name" name="recipe_name" placeholder="Recipe Name">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="recipe_cooktime" class="col-sm-2 vertical-center">Cook Time</label>
+				<div class="col-sm-10">
+					<input type="number" id="recipe_cooktime" name="recipe_cooktime"
+					       placeholder="Cook Time (in minutes)">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 vertical-center">Image</label>
+				<div class="col-sm-10 custom-file">
+					<input type="file" class="custom-file-input" name="recipe_image" id="recipe_image">
+					<label class="col-sm-2 custom-file-label" for="recipe_image">Choose file...</label>
+				</div>
+			</div>
+			<div class="form-group row">
+				<input type="hidden" name="recipe_amount" id="recipe_amount" value="">
+				<input type="hidden" name="recipe_unit" id="recipe_unit" value="">
+				<input type="hidden" name="recipe_ingredients" id="recipe_ingredients" value="">
+				<label for="recipe_ingredients" class="col-sm-2 vertical-center">Ingredients</label>
+				<div class="col-sm-10">
+					<table id="ingredientsTable">
+						<thead>
+						<tr>
+							<td id="table-amount">Amount</td>
+							<td id="table-unit">Unit</td>
+							<td id="table-ingredient">Ingredient</td>
+						</tr>
+						</thead>
+						<tbody>
 
-          </tbody>
-        </table>
-        <div class="input-group">
-          <input type="number" class="form-control" id="recipe_ingredients_amount" placeholder="Amount">
-          <input type="text" class="form-control" id="recipe_ingredients_unit" placeholder="Unit">
-          <select class="custom-select" id="recipe_ingredients_ingredient">
-              <option selected>Ingredient</option>
-              {% for ingredient in ingredients %}
-              <option value="{{ ingredient.id }}">{{ ingredient.name }}</option>
-              {% endfor %}
-          </select>
-          <div class="input-group-append">
-            <button type="button" class="btn" id="add-ingredient-btn" name="Add Ingredient">Add Ingredient</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="recipe_procedure" class="col-sm-2 vertical-center">Procedure</label>
-      <div class="col-sm-10">
-        <input type="text" id="recipe_procedure" placeholder="Recipe Procedure">
-      </div>
-    </div>
-    <br>
-    <input type="submit" id="submit" name="recipe">
-  </form>
-</div>
+						</tbody>
+					</table>
+					<div class="input-group">
+						<input type="number" class="form-control" id="recipe_ingredients_amount" placeholder="Amount">
+						<input type="text" class="form-control" id="recipe_ingredients_unit" placeholder="Unit">
+						<select class="custom-select" id="recipe_ingredients_ingredient">
+							<option selected>Ingredient</option>
+							{% for ingredient in ingredients %}
+								<option value="{{ ingredient.id }}">{{ ingredient.name }}</option>
+							{% endfor %}
+						</select>
+						<div class="input-group-append">
+							<button type="button" class="btn" id="add-ingredient-btn" name="Add Ingredient">Add
+								Ingredient
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<input type="hidden" name="recipe_step" id="recipe_step" value="">
+				<input type="hidden" name="recipe_procedure" id="recipe_procedure" value="">
+				<label for="recipe_procedure" class="col-sm-2 vertical-center">Procedure</label>
+				<div class="col-sm-10">
+					<table id="procedureTable">
+						<thead>
+						<tr>
+							<td id="table-step">Step</td>
+							<td id="table-procedure">Procedure</td>
+						</tr>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
+					<div class="input-group">
+						<div class="input-group-prepend" id="recipe_step">
+							<span class="input-group-text" id="recipe_step_text">1</span>
+						</div>
+						<input type="text" class="form-control" id="recipe_procedure_text" placeholder="Recipe Procedure">
+						<div class="input-group-append">
+							<button type="button" class="btn" id="add-procedure-btn" name="Add Procedure">
+								Add Procedure
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+			<input type="submit" id="submit" name="recipe">
+		</form>
+	</div>
 
 {% endblock %}
 
 {% block script %}
 
-<script src="{{ url_for('static', filename='js/recipe_table_align.js') }}" charset="utf-8"></script>
-<script src="{{ url_for('static', filename='js/recipe_new_form.js') }}" charset="utf-8"></script>
+	<script src="{{ url_for('static', filename='js/recipe_table_align.js') }}" charset="utf-8"></script>
+	<script src="{{ url_for('static', filename='js/recipe_new_form.js') }}" charset="utf-8"></script>
 
 {% endblock %}

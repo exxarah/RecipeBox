@@ -1,47 +1,75 @@
 function addIngredientToTable() {
-  var ingredientsTable = document.getElementById('ingredientsTable').getElementsByTagName('tbody')[0]
+    let ingredientsTable = document.getElementById('ingredientsTable').getElementsByTagName('tbody')[0];
+    let newRow = ingredientsTable.insertRow()
 
-  var newIngredient = document.getElementById('recipe_ingredients_ingredient')
-  var newAmount = document.getElementById('recipe_ingredients_amount')
-  var newUnit = document.getElementById('recipe_ingredients_unit')
+    let newAmount = document.getElementById('recipe_ingredients_amount')
+    let amountCell = newRow.insertCell()
+    let amountText = document.createTextNode(newAmount.value)
+    amountCell.setAttribute("data-value", newAmount.value)
+    amountCell.appendChild(amountText)
 
-  var newRow = ingredientsTable.insertRow()
+    let newUnit = document.getElementById('recipe_ingredients_unit')
+    let unitCell = newRow.insertCell(-1)
+    let unitText = document.createTextNode(newUnit.value)
+    unitCell.setAttribute("data-value", newUnit.value)
+    unitCell.appendChild(unitText)
 
-  var amountCell = newRow.insertCell()
-  var amountText = document.createTextNode(newAmount.value)
-  amountCell.setAttribute("value", newAmount.value)
-  amountCell.appendChild(amountText)
+    let newIngredient = document.getElementById('recipe_ingredients_ingredient');
+    let ingredientCell = newRow.insertCell(-1)
+    let ingredientText = document.createTextNode(newIngredient.options[newIngredient.selectedIndex].text)
+    ingredientCell.setAttribute("data-value", newIngredient.options[newIngredient.selectedIndex].value)
+    ingredientCell.appendChild(ingredientText)
 
-  var unitCell = newRow.insertCell(-1)
-  var unitText = document.createTextNode(newUnit.value)
-  unitCell.setAttribute("value", newUnit.value)
-  unitCell.appendChild(unitText)
+    console.log("added item")
+}
 
-  var ingredientCell = newRow.insertCell(-1)
-  var ingredientText = document.createTextNode(newIngredient.options[newIngredient.selectedIndex].text)
-  ingredientCell.setAttribute("value", newIngredient.options[newIngredient.selectedIndex].text)
-  ingredientCell.appendChild(ingredientText)
+function addProcedureToTable() {
+    let procedureTable = document.getElementById('procedureTable').getElementsByTagName('tbody')[0];
+    let newRow = procedureTable.insertRow()
 
-  console.log("added item")
+    let newStep = document.getElementById('recipe_step_text')
+    let stepCell = newRow.insertCell(-1)
+    let stepText = document.createTextNode(newStep.innerText)
+    stepCell.setAttribute("data-value", newStep.innerText)
+    stepCell.appendChild(stepText)
+
+    newStep.innerText = (parseInt(newStep.innerText) + 1).toString();
+
+    let newProcedure = document.getElementById('recipe_procedure_text')
+    let procedureCell = newRow.insertCell(-1)
+    let procedureText = document.createTextNode(newProcedure.value)
+    procedureCell.setAttribute("data-value", newProcedure.value)
+    procedureCell.appendChild(procedureText)
 }
 
 function submitForm(){
-  var recipeAmount = document.getElementById('recipe_amount')
-  var recipeUnit = document.getElementById('recipe_unit')
-  var recipeIngredients = document.getElementById('recipe_ingredients')
-  var ingredientsTable = document.getElementById('ingredientsTable')
+    let recipeAmount = document.getElementById('recipe_amount')
+    let recipeUnit = document.getElementById('recipe_unit')
+    let recipeIngredients = document.getElementById('recipe_ingredients')
+    let ingredientsTable = document.getElementById('ingredientsTable')
 
-  for (var i = 1; i < ingredientsTable.rows.length; i++) {
-    recipeAmount.value += ingredientsTable.rows.item(i).cells.item(0).value + ','
-    console.log(recipeAmount.value)
-  }
+    for (let i = 1; i < ingredientsTable.rows.length; i++) {
+        recipeAmount.value += ingredientsTable.rows.item(i).cells.item(0).dataset.value + ','
+        recipeUnit.value += ingredientsTable.rows.item(i).cells.item(1).dataset.value + ','
+        recipeIngredients.value += ingredientsTable.rows.item(i).cells.item(2).dataset.value + ','
+    }
+
+    let recipeStep = document.getElementById('recipe_step')
+    let recipeProcedure = document.getElementById('recipe_procedure')
+    let procedureTable = document.getElementById('procedureTable')
+
+    for (let i = 1; i < procedureTable.rows.length; i++) {
+        recipeStep.value += procedureTable.rows.item(i).cells.item(0).dataset.value + ','
+    }
 }
 
 console.log('loaded js')
 
-var addButton = document.getElementById('add-ingredient-btn')
-addButton.setAttribute("onclick", "addIngredientToTable();")
+let ingredientButton = document.getElementById('add-ingredient-btn')
+ingredientButton.setAttribute("onclick", "addIngredientToTable();")
 
+let procedureButton = document.getElementById('add-procedure-btn')
+procedureButton.setAttribute("onclick", "addProcedureToTable();")
 
-var submitButton = document.getElementById('submit')
+let submitButton = document.getElementById('submit')
 submitButton.setAttribute("onclick", "submitForm();")
