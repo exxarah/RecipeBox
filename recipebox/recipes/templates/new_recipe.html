@@ -34,67 +34,38 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<input type="hidden" name="recipe_amount" id="recipe_amount" value="">
-				<input type="hidden" name="recipe_unit" id="recipe_unit" value="">
-				<input type="hidden" name="recipe_ingredients" id="recipe_ingredients" value="">
 				<label for="recipe_ingredients" class="col-sm-2 vertical-center">Ingredients</label>
 				<div class="col-sm-10">
-					<table id="ingredientsTable">
-						<thead>
-						<tr>
-							<td id="table-amount">Amount</td>
-							<td id="table-unit">Unit</td>
-							<td id="table-ingredient">Ingredient</td>
-						</tr>
-						</thead>
-						<tbody>
-
-						</tbody>
-					</table>
-					<div class="input-group">
-						<input type="number" class="form-control" id="recipe_ingredients_amount" placeholder="Amount">
-						<input type="text" class="form-control" id="recipe_ingredients_unit" placeholder="Unit">
-						<select class="custom-select" id="recipe_ingredients_ingredient">
-							<option selected>Ingredient</option>
-							{% for ingredient in ingredients %}
-								<option value="{{ ingredient.id }}">{{ ingredient.name }}</option>
-							{% endfor %}
-						</select>
-						<div class="input-group-append">
-							<button type="button" class="btn" id="add-ingredient-btn" name="Add Ingredient">Add
-								Ingredient
-							</button>
+					<div class="ingredients-parent">
+						<div class="input-group recipe-ingredients">
+							<input type="number" name="recipe_amount[]" class="form-control" placeholder="Amount">
+							<input type="text" name="recipe_unit[]" class="form-control" placeholder="Unit">
+							<select class="custom-select" name="recipe_ingredients[]">
+								<option selected>Ingredient</option>
+								{% for ingredient in ingredients %}
+									<option value="{{ ingredient.id }}">{{ ingredient.name }}</option>
+								{% endfor %}
+							</select>
+							<div class="input-group-append">
+								<input type="button" value="x" id="remove-ingredient-btn">
+							</div>
 						</div>
 					</div>
+					<input type="button" value="Add Ingredient" id="add-ingredient-btn">
 				</div>
 			</div>
 			<div class="form-group row">
-				<input type="hidden" name="recipe_step" id="recipe_step" value="">
-				<input type="hidden" name="recipe_procedure" id="recipe_procedure" value="">
-				<label for="recipe_procedure" class="col-sm-2 vertical-center">Procedure</label>
+				<label for="recipe_procedures" class="col-sm-2 vertical-center">Procedures</label>
 				<div class="col-sm-10">
-					<table id="procedureTable">
-						<thead>
-						<tr>
-							<td id="table-step">Step</td>
-							<td id="table-procedure">Procedure</td>
-						</tr>
-						</thead>
-						<tbody>
-
-						</tbody>
-					</table>
-					<div class="input-group">
-						<div class="input-group-prepend" id="recipe_step">
-							<span class="input-group-text" id="recipe_step_text">1</span>
-						</div>
-						<input type="text" class="form-control" id="recipe_procedure_text" placeholder="Recipe Procedure">
-						<div class="input-group-append">
-							<button type="button" class="btn" id="add-procedure-btn" name="Add Procedure">
-								Add Procedure
-							</button>
+					<div class="procedures-parent">
+						<div class="input-group recipe-procedures">
+							<input type="text" class="form-control" id="recipe_procedure_text" name="recipe_procedure[]" placeholder="Recipe Procedure">
+							<div class="input-group-append">
+								<input type="button" value="x" id="remove-procedure-btn">
+							</div>
 						</div>
 					</div>
+					<input type="button" value="Add Procedure" id="add-procedure-btn">
 				</div>
 			</div>
 			<br>
@@ -106,7 +77,6 @@
 
 {% block script %}
 
-	<script src="{{ url_for('static', filename='js/recipe_table_align.js') }}" charset="utf-8"></script>
 	<script src="{{ url_for('static', filename='js/recipe_new_form.js') }}" charset="utf-8"></script>
 
 {% endblock %}

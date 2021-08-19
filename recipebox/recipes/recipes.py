@@ -1,5 +1,5 @@
 from flask import render_template, url_for, request, redirect
-from recipebox.models.recipes import Recipe, Ingredient, RecipeIngredient
+from recipebox.models.recipes import Recipe, Ingredient, RecipeIngredient, RecipeProcedure
 from recipebox import db
 from . import recipe_bp
 
@@ -16,22 +16,26 @@ def recipe_new():
         recipe = Recipe(
             name=request.form["recipe_name"],
             picture="hamcheesesandwich.png",
-            cook_time = request.form["recipe_cooktime"]
+            cook_time=request.form["recipe_cooktime"]
         )
 
-        ingredients_amount = request.form["recipe_amount"].split(',')[:-1]
-        ingredients_unit = request.form["recipe_unit"].split(',')[:-1]
-        ingredients_ingredients = request.form["recipe_ingredients"].split(',')[:-1]
-        print(ingredients_amount)
-        for i in range(len(ingredients_amount)):
+        for i in range(len(request.form.getlist("recipe_amount[]"))):
             i = RecipeIngredient(
                 recipe=recipe.id,
-                ingredient=ingredients_ingredients[i],
-                quantity=ingredients_amount[i],
-                unit=ingredients_unit[i]
+                ingredient=request.form.getlist("recipe_ingredients[]")[i],
+                quantity=request.form.getlist("recipe_amount[]")[i],
+                unit=request.form.getlist("recipe_unit[]")[i]
             )
-            print(i)
             recipe.ingredients.append(i)
+
+        for i in range(len(request.form.getlist("recipe_procedure[]"))):
+            i = RecipeProcedure(
+                recipe=recipe.id,
+                step=i+1,
+                procedure=request.form.getlist("recipe_procedure[]")[i]
+            )
+            recipe.procedures.append(i)
+
         db.session.add(recipe)
         db.session.commit()
         return redirect(url_for("recipe_bp.recipe_view", id=recipe.id))
