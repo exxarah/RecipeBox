@@ -2,6 +2,7 @@
 import datetime
 
 from flask import current_app
+from flask_login import current_user
 import os
 from recipebox import db
 from recipebox.models.auth import Like
@@ -23,7 +24,7 @@ class Ingredient(db.Model):
     __tablename__ = "ingredient"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False)
-    picture  = db.Column(db.String(150), nullable=False)
+    picture = db.Column(db.String(150), nullable=False)
     recipes = db.relationship('RecipeIngredient', backref="ingredient_object", lazy=True)
 
     def __init__(self, name):
@@ -83,8 +84,8 @@ class Recipe(db.Model):
         self.name = name
         self.picture = picture
         self.cook_time = cook_time
-        self.user_id = 0
         self.date_created = datetime.datetime.now()
+
 
 class RecipeIngredient(db.Model):
     """

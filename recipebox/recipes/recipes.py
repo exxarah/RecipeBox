@@ -3,6 +3,7 @@ import uuid
 
 import flask
 from flask import render_template, url_for, request, redirect, flash
+from flask_login import current_user, login_required
 
 from config import ALLOWED_EXTENSIONS
 from recipebox.models.recipes import Recipe, Ingredient, RecipeIngredient, RecipeProcedure
@@ -17,12 +18,15 @@ def recipe():
 
 
 @recipe_bp.route('/recipe/new/', methods=['GET'])
+@login_required
 def recipe_new_get():
     return render_template('new_recipe.html', ingredients=Ingredient.query.all())
+
 
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 
 @recipe_bp.route('/recipe/new/', methods=['POST'])
 def recipe_new_post():
@@ -71,10 +75,13 @@ def recipe_new_post():
         )
         recipe.procedures.append(i)
 
+    current_user.recipes.append(recipe)
+
     db.session.add(recipe)
     db.session.flush()
     db.session.commit()
     return redirect(url_for("recipe_bp.recipe_view", id=recipe.id))
+
 
 @recipe_bp.route('/recipe/<id>/')
 def recipe_view(id):

@@ -12,9 +12,9 @@
     - [X] Make CSS to match
     - [ ] Add an extra slightly more red colour as a mouseover accent, for buttons etc
     - [X] Make ingredient/recipe pages match the design
-- [ ] An Actual Website
+- [X] An Actual Website
     - [X] Set up a home page, with appropriate AdobeXD design  
-    - [ ] Set up user login
+    - [X] Set up user login
     - [X] Let users add recipes
 - [X] Fix form for adding recipes, add ingredients etc
 - [X] CSS for adding recipe form
@@ -29,7 +29,7 @@
 - [ ] Refine search functionality
     - [ ] Search by list of ingredient in pantry?
     - [ ] Add tags to recipes, for food genre, quick, etc
-- [ ] User pages
+- [X] User pages
 - [ ] Make it secure
 - [ ] Add an API
 - [ ] Add documentation

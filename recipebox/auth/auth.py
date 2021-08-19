@@ -46,7 +46,6 @@ def login_post():
     password = request.form.get('password')
 
     user = User.query.filter_by(email=email).first()
-    print("user password:", user.password)
     if not user or not check_password_hash(user.password, password):
         flash('Please check your login details and try again.')
         return redirect(url_for('auth_bp.login'))

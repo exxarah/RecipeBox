@@ -16,7 +16,7 @@
 			</div>
 			<div class="col vertical-center">
 				<h3>{{ recipe.name }}</h3>
-				<p class="subtitle">JaneUsername</p>
+				<p class="subtitle">{{ recipe.user_object.username }}</p>
 				<div class="inline">
 					<div id="star-score">
 						{% for i in range(5) %}

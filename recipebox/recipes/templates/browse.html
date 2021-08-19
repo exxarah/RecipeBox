@@ -77,7 +77,7 @@
 								<div>
 									<a href="{{ url_for('recipe_bp.recipe_view', id=item.id) }}">
 										<h5>{{ item.name }}</h5></a>
-									<p>By JaneUsername</p>
+									<p>By {{ item.user_object.username }}</p>
 								</div>
 							</div>
 						</div>
