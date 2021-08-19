@@ -21,6 +21,8 @@
 - [X] Update database to make sure it fits all the requirements of the designs/pages
 - [ ] Dummy data/accounts
 - [ ] Responsive changes to website
+- [ ] Profile page, list of users recipes
+- [ ] Hook up all the existing search fields
 
 ## Stretch Goals
 - [ ] Interactivity

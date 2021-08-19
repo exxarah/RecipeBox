@@ -17,8 +17,12 @@ def ingredient_new():
         return render_template('new_ingredient.html')
 
 
-@recipe_bp.route('/ingredient/search/<string>')
-def ingredient_search(string):
-    matching_ingredients = [ingredient.name for ingredient in Ingredient.search_name(string)]
+@recipe_bp.route('ingredient/search/')
+@recipe_bp.route('/ingredient/search/<string>/')
+def ingredient_search(string=None):
+    if string is None:
+        matching_ingredients = [ingredient.name for ingredient in Ingredient.query.all()]
+    else:
+        matching_ingredients = [ingredient.name for ingredient in Ingredient.search_name(string)]
     print(matching_ingredients)
     return jsonify(ingredients=matching_ingredients)

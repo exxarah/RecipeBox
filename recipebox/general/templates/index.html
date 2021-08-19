@@ -12,32 +12,22 @@
 		<div id="big-logo">
 			<i class="fas fa-pizza-slice"></i> RECIPEBOX
 		</div>
-		<div id="search">
+		<form id="search">
 			<p>I'm in the mood for...</p>
-			<div class="dropdown">
-				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-				        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Meal & Course
-				</button>
-				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					{% for course in courses %}
-						<a class="dropdown-item" href="#">{{ course }}</a>
-					{% endfor %}
-				</div>
-			</div>
+			<select name="search-courses" class="dropdown-toggle" aria-label="Meal & Courses">
+				<option class="dropdown-item" selected>Meal & Courses</option>
+				{% for course in courses %}
+					<option class="dropdown-item" value="{{ course }}">{{ course }}</option>
+				{% endfor %}
+			</select>
 			<p>with...</p>
-			<div class="dropdown">
-				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-				        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Ingredients
-				</button>
-				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					{% for ingredient in ingredients %}
-						<a class="dropdown-item" href="#">{{ ingredient }}</a>
-					{% endfor %}
-				</div>
-			</div>
-			<button id="submit"><i class="fas fa-arrow-right"></i></button>
-		</div>
+			<select name="search-ingredients" class="dropdown-toggle" aria-label="Ingredients">
+				<option class="dropdown-item" selected>Ingredients</option>
+				{% for ingredient in ingredients %}
+					<option class="dropdown-item" value="{{ ingredient }}">{{ ingredient }}</option>
+				{% endfor %}
+			</select>
+			<button type="submit" id="submit"><i class="fas fa-arrow-right"></i></button>
+		</form>
 	</div>
 {% endblock %}

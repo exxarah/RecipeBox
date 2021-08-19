@@ -17,7 +17,7 @@
     color: #8e756a;
     border: 7px solid #8e756a;
     padding: 0px 0px 0px 10px;
-    font-size: 30px;
+    font-size: 1.5vw;
     display: table;
     width: 100%;
     height: 100%;
@@ -36,6 +36,11 @@
 #search #dropdownMenuButton {
     margin-top: -7px;
     height: 100%;
+}
+
+.dropdown-toggle .dropdown-item:active {
+    background-color: #8e756a;
+    color: #f5edda;
 }
 
 #submit {
