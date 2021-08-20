@@ -13,39 +13,30 @@
 				<br/>
 				<p>I'm in the mood for...</p>
 				<br/>
-				<div><input type="text" placeholder="Search"/></div>
-				<div class="dropdown">
-					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-					        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Meal & Course
-					</button>
-					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						{% for course in courses %}
-							<a class="dropdown-item" href="#">{{ course }}</a>
-						{% endfor %}
-					</div>
-				</div>
-				<div class="dropdown">
-					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-					        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Ingredients
-					</button>
-					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<div><input type="text" name="search-text" placeholder="Search"/></div>
+				<div>
+					<select class="dropdown-toggle" name="search-courses" aria-label="Meal & Courses">
+						<option selected>Meal & Courses</option>
 						{% for ingredient in ingredients %}
-							<a class="dropdown-item" href="#">{{ ingredient }}</a>
+							<option class="dropdown-item" value="">{{ ingredient.name }}</option>
 						{% endfor %}
-					</div>
+					</select>
 				</div>
-				<div class="dropdown">
-					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-					        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Sort By
-					</button>
-					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						{% for sort in sorts %}
-							<a class="dropdown-item" href="#">{{ sort }}</a>
+				<div>
+					<input name="search-ingredients" list="" class="form-control datalist-input" id="ingredients-input" value="Ingredient">
+					<datalist id="ingredients" class="dropdown-menu datalist-list">
+						{% for ingredient in ingredients %}
+							<option class="dropdown-item">{{ ingredient.name }}</option>
 						{% endfor %}
-					</div>
+					</datalist>
+				</div>
+				<div>
+					<select class="dropdown-toggle" name="search-sort" aria-label="Sort By">
+						<option selected>Sort By</option>
+						{% for sort in sorts %}
+							<option class="dropdown-item" value="">{{ sort }}</option>
+						{% endfor %}
+					</select>
 				</div>
 				<div id="tags">
 					<div class="tag-container">
@@ -86,6 +77,10 @@
 			</div>
 		</div>
 	</div>
+{% endblock %}
+
+{% block script %}
+	<script src="{{ url_for('static', filename='js/new-datalist.js') }}" charset="utf-8"></script>
 {% endblock %}
 
 {% block footer %}{% endblock %}

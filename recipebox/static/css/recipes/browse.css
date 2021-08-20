@@ -18,6 +18,11 @@
     padding: 10px 20px 0px 20px;
 }
 
+#search-col .dropdown-toggle{
+    width: 100%;
+    padding: 10px;
+}
+
 #search-col p {
     font-size: 30px;
     text-align: center;

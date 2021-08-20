@@ -17,6 +17,13 @@ def recipe():
     return render_template('browse.html', browse_items=selected_recipes)
 
 
+@recipe_bp.route('/recipe/', methods=['POST'])
+def recipe_post():
+    selected_recipes = Recipe.query.all()
+    search_term = request.form.get('search-text')
+    return render_template('browse.html', browse_items=selected_recipes)
+
+
 @recipe_bp.route('/recipe/new/', methods=['GET'])
 @login_required
 def recipe_new_get():

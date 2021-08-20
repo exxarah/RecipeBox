@@ -1,43 +1,49 @@
-var input = document.getElementById('ingredients-input')
-var ingredients = document.getElementById('ingredients')
+var inputs = document.getElementsByClassName('datalist-input')
+var datalists = document.getElementsByClassName('datalist-list')
 var keepListOpen = false;
 
-input.onfocus = function () {
-  ingredients.style.display = 'block';
-  input.style.borderRadius = "5px 5px 0 0";
-};
+for (let input of inputs) {
+  for (let datalist of datalists){
 
-input.onblur = function () {
-  if (!keepListOpen)
-    ingredients.style.display = 'none';
-}
+    input.onfocus = function () {
+      datalist.style.display = 'block';
+      input.style.borderRadius = "5px 5px 0 0";
+    };
 
-input.oninput = function() {
-  let text = input.value.toUpperCase();
-  for (let option of ingredients.options) {
-    if(option.value.toUpperCase().indexOf(text) > -1){
-      option.style.display = "block";
-    }else{
-      option.style.display = "none";
+    input.onblur = function () {
+      if (!keepListOpen)
+        datalist.style.display = 'none';
     }
-  }
-}
 
-for (let option of ingredients.options) {
-  option.onmousedown = function() {
-    keepListOpen = true;
-  }
-  option.onclick = function () {
-    input.value = option.innerHTML
-    ingredients.style.display = 'none';
-    input.style.borderRadius = "5px";
-  }
-}
+    input.oninput = function() {
+      let text = input.value.toUpperCase();
+      for (let option of datalist.options) {
+        if(option.value.toUpperCase().indexOf(text) > -1){
+          option.style.display = "block";
+        }else{
+          option.style.display = "none";
+        }
+      }
+    }
+
+    for (let option of datalist.options) {
+      option.onmousedown = function() {
+        keepListOpen = true;
+      }
+      option.onclick = function () {
+        input.value = option.innerHTML
+        datalist.style.display = 'none';
+        input.style.borderRadius = "5px";
+      }
+    }
 
 
-window.onmouseup = function () {
-  if (keepListOpen) {
-      ingredients.style.display = 'none';
-      keepListOpen = false;
+    window.onmouseup = function () {
+      if (keepListOpen) {
+          datalist.style.display = 'none';
+          keepListOpen = false;
+      }
+    }
+
   }
 }

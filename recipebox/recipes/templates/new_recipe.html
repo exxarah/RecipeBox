@@ -40,9 +40,9 @@
 						<div class="input-group recipe-ingredients">
 							<input type="number" name="recipe_amount[]" class="form-control" placeholder="Amount">
 							<input type="text" name="recipe_unit[]" class="form-control" placeholder="Unit">
-							<div class="">
-								<input name="recipe_ingredients[]" list="" class="form-control" id="ingredients-input" value="Ingredient">
-								<datalist id="ingredients" class="dropdown-menu">
+							<div>
+								<input name="recipe_ingredients[]" list="" class="form-control datalist-input" id="ingredients-input" value="Ingredient">
+								<datalist id="ingredients" class="dropdown-menu datalist-list">
 									{% for ingredient in ingredients %}
 										<option class="dropdown-item">{{ ingredient.name }}</option>
 									{% endfor %}
