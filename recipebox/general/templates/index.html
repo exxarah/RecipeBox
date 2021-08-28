@@ -14,12 +14,14 @@
 		</div>
 		<form id="search" action="/recipe/" method="post">
 			<p class="inline">I'm in the mood for...</p>
-			<select name="search-courses" class="dropdown-toggle inline" aria-label="Meal & Courses">
-				<option class="dropdown-item" selected>Meal & Courses</option>
-				{% for course in courses %}
-					<option class="dropdown-item" value="{{ course }}">{{ course }}</option>
-				{% endfor %}
-			</select>
+			<div>
+				<select class="dropdown-toggle" name="search-courses" aria-label="Meal & Courses">
+					<option selected>Meal & Courses</option>
+					{% for course in courses %}
+						<option class="dropdown-item" value="">{{ course }}</option>
+					{% endfor %}
+				</select>
+			</div>
 			<p class="inline">with...</p>
 			<div>
 				<input name="search-ingredients" list="" class="form-control datalist-input" id="ingredients-input" value="Ingredient">
@@ -32,4 +34,8 @@
 			<button type="submit" id="submit" name="search" class="inline"><i class="fas fa-arrow-right"></i></button>
 		</form>
 	</div>
+{% endblock %}
+
+{% block script %}
+	<script src="{{ url_for('static', filename='js/new-datalist.js') }}" charset="utf-8"></script>
 {% endblock %}

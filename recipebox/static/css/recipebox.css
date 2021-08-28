@@ -109,6 +109,10 @@ input,
 
 /* DROPDOWN STYLING */
 
+.relative {
+    position: relative;
+}
+
 .dropdown-toggle,
 .custom-select,
 .dropdown-item,

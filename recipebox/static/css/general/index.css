@@ -3,6 +3,10 @@
     height: 87vh;
 }
 
+#centered-box {
+    width: fit-content;
+}
+
 #big-logo {
     color: #8e756a;
     font-size: 120px;
@@ -17,10 +21,13 @@
     color: #8e756a;
     border: 7px solid #8e756a;
     padding: 0px 0px 0px 10px;
-    font-size: 1.5vw;
     display: table;
     width: 100%;
     height: 100%;
+}
+
+#search * {
+    font-size: 20px;
 }
 
 #search > * {
@@ -33,12 +40,17 @@
     margin: 0px;
 }
 
-#search #dropdownMenuButton {
-    margin-top: -7px;
+#search #dropdownMenuButton,
+.dropdown-toggle {
     height: 100%;
 }
 
-.dropdown-toggle .dropdown-item:active {
+.dropdown-item {
+    background-color: #f5edda;
+    color: #8e756a;
+}
+
+.dropdown-item:active {
     background-color: #8e756a;
     color: #f5edda;
 }

@@ -10,47 +10,52 @@
 	<div id="browse-container" class="container-fluid">
 		<div id="content-row" class="row">
 			<div id="search-col" class="col-3">
-				<br/>
-				<p>I'm in the mood for...</p>
-				<br/>
-				<div><input type="text" name="search-text" placeholder="Search"/></div>
-				<div>
-					<select class="dropdown-toggle" name="search-courses" aria-label="Meal & Courses">
-						<option selected>Meal & Courses</option>
-						{% for ingredient in ingredients %}
-							<option class="dropdown-item" value="">{{ ingredient.name }}</option>
-						{% endfor %}
-					</select>
-				</div>
-				<div>
-					<input name="search-ingredients" list="" class="form-control datalist-input" id="ingredients-input" value="Ingredient">
-					<datalist id="ingredients" class="dropdown-menu datalist-list">
-						{% for ingredient in ingredients %}
-							<option class="dropdown-item">{{ ingredient.name }}</option>
-						{% endfor %}
-					</datalist>
-				</div>
-				<div>
-					<select class="dropdown-toggle" name="search-sort" aria-label="Sort By">
-						<option selected>Sort By</option>
-						{% for sort in sorts %}
-							<option class="dropdown-item" value="">{{ sort }}</option>
-						{% endfor %}
-					</select>
-				</div>
-				<div id="tags">
-					<div class="tag-container">
-						<div class="tag">
-							easy
-							<a href="#"><i class="far fa-times-circle"></i></a>
-						</div>
-						<div class="tag">
-							quick
-							<a href="#"><i class="far fa-times-circle"></i></a>
-						</div>
+				<form id="search" action="/recipe/" method="post">
+					<br/>
+					<p>I'm in the mood for...</p>
+					<br/>
+					<div><input type="text" name="search-text" placeholder="Search"/></div>
+					<div>
+						<select class="dropdown-toggle" name="search-courses" aria-label="Meal & Courses">
+							<option selected>Meal & Courses</option>
+							{% for course in courses %}
+								<option class="dropdown-item" value="">{{ course }}</option>
+							{% endfor %}
+						</select>
 					</div>
-					<input type="text" placeholder="Tags"/>
-				</div>
+					<div class="relative">
+						<input name="search-ingredients" list="" class="form-control datalist-input" id="ingredients-input" value="Ingredient">
+						<datalist id="ingredients" class="dropdown-menu datalist-list">
+							{% for ingredient in ingredients %}
+								<option class="dropdown-item">{{ ingredient.name }}</option>
+							{% endfor %}
+						</datalist>
+					</div>
+					<div>
+						<select class="dropdown-toggle" name="search-sort" aria-label="Sort By">
+							<option selected>Sort By</option>
+							{% for sort in sorts %}
+								<option class="dropdown-item" value="">{{ sort }}</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div id="tags">
+						<div class="tag-container">
+							<div class="tag">
+								easy
+								<a href="#"><i class="far fa-times-circle"></i></a>
+							</div>
+							<div class="tag">
+								quick
+								<a href="#"><i class="far fa-times-circle"></i></a>
+							</div>
+						</div>
+						<input type="text" placeholder="Tags"/>
+					</div>
+					<div>
+						<button class="btn" type="submit" name="search">Search</button>
+					</div>
+				</form>
 				{% include 'footer.html' ignore missing %}
 			</div>
 			<div id="browse-entries" class="col-9 offset-3">

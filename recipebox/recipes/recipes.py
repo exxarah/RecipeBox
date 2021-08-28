@@ -2,6 +2,7 @@ import os
 import uuid
 
 import flask
+import sqlalchemy
 from flask import render_template, url_for, request, redirect, flash
 from flask_login import current_user, login_required
 
@@ -14,14 +15,36 @@ from . import recipe_bp
 @recipe_bp.route('/recipe/')
 def recipe():
     selected_recipes = Recipe.query.all()
-    return render_template('browse.html', browse_items=selected_recipes)
+    return render_template('browse.html',
+                           browse_items=selected_recipes,
+                           courses=["Breakfast", "Lunch", "Dinner"],
+                           ingredients=Ingredient.query.all())
 
 
 @recipe_bp.route('/recipe/', methods=['POST'])
 def recipe_post():
     selected_recipes = Recipe.query.all()
+
+    selected_ingredients = request.form.get('search-ingredients')
+    if selected_ingredients != "Ingredient":
+        selected_recipes = db.session.query(Recipe, Ingredient, RecipeIngredient).filter(
+            Ingredient.id == RecipeIngredient.ingredient_id,
+            Recipe.id == RecipeIngredient.recipe_id,
+            Ingredient.name == selected_ingredients
+        ).all()
+        selected_recipes = list(set([val[0] for val in selected_recipes]))
+        # TODO: Figure out a better way to get the unique ones
+
     search_term = request.form.get('search-text')
-    return render_template('browse.html', browse_items=selected_recipes)
+    if search_term and search_term != "Search":
+        selected_recipes = [recipe in selected_recipes if recipe.name == search_term else None]
+        print(selected_recipes)
+
+    return render_template('browse.html',
+                           browse_items=selected_recipes,
+                           courses=["Breakfast", "Lunch", "Dinner"],
+                           ingredients=Ingredient.query.all()
+                           )
 
 
 @recipe_bp.route('/recipe/new/', methods=['GET'])

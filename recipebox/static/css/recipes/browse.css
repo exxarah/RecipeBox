@@ -14,11 +14,12 @@
     height: 100%;
 }
 
-#search-col > * {
+#search-col > form > * {
     padding: 10px 20px 0px 20px;
 }
 
-#search-col .dropdown-toggle{
+#search-col .dropdown-toggle,
+#search-col .btn {
     width: 100%;
     padding: 10px;
 }
