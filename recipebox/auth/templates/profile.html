@@ -9,8 +9,8 @@
 
 {% block content %}
 	<div class="container" id="profile-container">
-		<div class="row">
-			<div class="col-6">
+		<div id="user-info-row" class="row">
+			<div class="col-4">
 				<div class="img-box">
 					<img src="{{ url_for('static', filename='res/auth/' + 'goora.jpg') }}">
 				</div>
@@ -39,7 +39,7 @@
 								<span>{{ recipe.name }}</span>
 								<br>
 								<span class="inline"><i class="fas fa-clock"></i> {{ recipe.cook_time }}mins</span>
-								<span class="inline"><i class="fas fa-heart"></i> 1k</span>
+								<span class="inline"><i class="fas fa-heart"></i> {{ recipe.likes|length }}</span>
 							</div>
 						</a>
 					{% endfor %}

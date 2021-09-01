@@ -86,6 +86,23 @@ class Recipe(db.Model):
         self.cook_time = cook_time
         self.date_created = datetime.datetime.now()
 
+    def rating_score(self):
+        score = 0
+        count = 0
+        for rating in self.ratings:
+            count += 1
+            score += rating.score
+        if count > 0:
+            score /= count
+            round(score)
+        return score
+
+    def liked_by(self, user=current_user):
+        for like in self.likes:
+            if like.user_id == user.id:
+                return True
+        return False
+
 
 class RecipeIngredient(db.Model):
     """

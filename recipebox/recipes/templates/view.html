@@ -10,23 +10,23 @@
 {% block content %}
 	<div id="view-container" class="container">
 		<div id="recipe-info" class="row">
-			<div class="col-6">
+			<div class="col-4">
 				<div class="img-box">
 					<img src="{{ url_for('static', filename='res/recipes/' + recipe.picture) }}"></div>
 			</div>
 			<div class="col vertical-center">
 				<h3>{{ recipe.name }}</h3>
-				<p class="subtitle">{{ recipe.user_object.username }}</p>
+				<a href="{{ url_for('auth_bp.profile_user', user_id=recipe.user_object.id) }}"><p class="subtitle">{{ recipe.user_object.username }}</p></a>
 				<div class="inline">
 					<div id="star-score">
 						{% for i in range(5) %}
-							<i class="fas fa-star"></i>
+							<i class="fas fa-star {{ 'selected' if i < recipe.rating_score() }}"></i>
 						{% endfor %}
-						<p>(4)</p>
+						<p>({{ recipe.ratings|length }})</p>
 					</div>
 					<div id="like-button">
-						<i class="fas fa-heart"></i>
-						<p>1k</p>
+						<i class="fas fa-heart {{ 'selected' if recipe.liked_by() }} "></i>
+						<p>{{ recipe.likes|length }}</p>
 					</div>
 				</div>
 				<div id="description">

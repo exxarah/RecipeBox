@@ -57,7 +57,13 @@ def login_post():
 @auth_bp.route('/profile/')
 @login_required
 def profile():
-    return render_template('profile.html', user=current_user)
+    return render_template('profile.html', user=current_user, edit=True)
+
+
+@auth_bp.route('/profile/<user_id>')
+def profile_user(user_id):
+    this_user = User.query.filter_by(id=user_id).first()
+    return render_template('profile.html', user=this_user, edit=False)
 
 
 @login_required

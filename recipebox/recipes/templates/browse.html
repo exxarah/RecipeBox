@@ -51,7 +51,7 @@
 						<div class="masonry-item">
 							<div id="item-header">
 								<p><i class="fas fa-clock"></i> {{ item.cook_time }}mins</p>
-								<p class="right-text"><i class="fas fa-heart"></i> 1k</p>
+								<p class="right-text"><i class="fas fa-heart"></i> {{ item.likes|length }}</p>
 							</div>
 							<a href="{{ url_for('recipe_bp.recipe_view', id=item.id) }}"><img
 									src="{{ url_for('static', filename='res/recipes/' + item.picture) }}"></a>

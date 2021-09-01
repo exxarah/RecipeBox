@@ -25,6 +25,10 @@ a:hover {
     color: #f5edda;
 }
 
+i.selected {
+    color: #B17C58;
+}
+
 .vertical-center {
     margin-top: auto;
     margin-bottom: auto;
@@ -47,6 +51,19 @@ a:hover {
 .flash-box {
     background-color: coral;
     color: #f5edda;
+}
+
+.img-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.img-box > img {
+    min-width: 100%;
+    min-height: 100%;
+    flex-shrink: 0;
 }
 
 /* TEXT INPUT STYLING */
