@@ -8,30 +8,15 @@
 {% block title %}INDEX{% endblock %}
 
 {% block content %}
-	<div id="centered-box">
+	<div id="centered-box" class="container">
 		<div id="big-logo">
 			<i class="fas fa-pizza-slice"></i> RECIPEBOX
 		</div>
-		<form id="search" action="/recipe/" method="post">
-			<p class="inline">I'm in the mood for...</p>
-			<div>
-				<select class="dropdown-toggle" name="search-courses" aria-label="Meal & Courses">
-					<option selected>Meal & Courses</option>
-					{% for course in courses %}
-						<option class="dropdown-item" value="">{{ course }}</option>
-					{% endfor %}
-				</select>
+		<form id="search" action="/recipe/" method="post" class="row">
+			<div class="col-10">
+				<input type="text" name="search-text" placeholder="Search"/>
 			</div>
-			<p class="inline">with...</p>
-			<div>
-				<input name="search-ingredients" list="" class="form-control datalist-input" id="ingredients-input" value="Ingredient">
-				<datalist id="ingredients" class="dropdown-menu datalist-list">
-					{% for ingredient in ingredients %}
-						<option class="dropdown-item">{{ ingredient.name }}</option>
-					{% endfor %}
-				</datalist>
-			</div>
-			<button type="submit" id="submit" name="search" class="inline"><i class="fas fa-arrow-right"></i></button>
+			<button type="submit" id="submit" name="search" class="col-2"><i class="fas fa-arrow-right"></i></button>
 		</form>
 	</div>
 {% endblock %}
