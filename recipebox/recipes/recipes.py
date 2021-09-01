@@ -26,7 +26,7 @@ def recipe_post():
     selected_recipes = Recipe.query.all()
 
     selected_ingredients = request.form.get('search-ingredients')
-    if selected_ingredients != "Ingredient":
+    if selected_ingredients and selected_ingredients != "Ingredient" and selected_ingredients != "":
         selected_recipes = db.session.query(Recipe, Ingredient, RecipeIngredient).filter(
             Ingredient.id == RecipeIngredient.ingredient_id,
             Recipe.id == RecipeIngredient.recipe_id,
@@ -36,8 +36,8 @@ def recipe_post():
         # TODO: Figure out a better way to get the unique ones
 
     search_term = request.form.get('search-text')
-    if search_term and search_term != "Search":
-        selected_recipes = [recipe in selected_recipes if recipe.name == search_term else None]
+    if search_term and search_term != "Search" and search_term != "":
+        selected_recipes = [x for x in selected_recipes if search_term.lower() in x.name.lower()]
         print(selected_recipes)
 
     return render_template('browse.html',
