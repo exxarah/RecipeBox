@@ -7,12 +7,18 @@ h3 {
     margin: 8px 0px;
 }
 
-.subtitle {
+.subtitle,
+#like-button i {
     color: #8e756a;
 }
 
-.subtitle:hover {
+.subtitle:hover,
+#like-button i:hover {
     color: #f5edda;
+}
+
+#like-button .selected {
+    color: #B17C58;
 }
 
 #recipe-info,

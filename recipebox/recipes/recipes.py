@@ -3,13 +3,14 @@ import uuid
 
 import flask
 import sqlalchemy
-from flask import render_template, url_for, request, redirect, flash
+from flask import render_template, url_for, request, redirect, flash, jsonify
 from flask_login import current_user, login_required
 
 from config import ALLOWED_EXTENSIONS
 from recipebox.models.recipes import Recipe, Ingredient, RecipeIngredient, RecipeProcedure
 from recipebox import db
 from . import recipe_bp
+from ..models.auth import Like
 
 
 @recipe_bp.route('/recipe/')
@@ -120,3 +121,24 @@ def recipe_view(id):
         return render_template('404_notfound.html')
     else:
         return render_template('view.html', recipe=selected_recipe)
+
+
+@recipe_bp.route('/recipe/<id>/liked_by')
+def recipe_liked_by(id):
+    print("Running with ID", id)
+    selected_recipe = Recipe.query.get(id)
+    if selected_recipe.liked_by():
+        print("It was already liked!")
+        like = Like.query.filter(Like.user_id == current_user.id and Like.recipe_id == id).first()
+        db.session.delete(like)
+    else:
+        print("It is not liked!")
+        like = Like(
+            recipe_id=id,
+            user_id=current_user.id
+        )
+        db.session.add(like)
+
+    db.session.commit()
+    response = {"liked": selected_recipe.liked_by(), "num_likes": len(selected_recipe.likes)}
+    return jsonify(response)

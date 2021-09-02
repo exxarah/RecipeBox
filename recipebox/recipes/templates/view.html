@@ -25,8 +25,8 @@
 						<p>({{ recipe.ratings|length }})</p>
 					</div>
 					<div id="like-button">
-						<i class="fas fa-heart {{ 'selected' if recipe.liked_by() }} "></i>
-						<p>{{ recipe.likes|length }}</p>
+						<a href="#" class="like-button-request"><i class="fas fa-heart {{ 'selected' if recipe.liked_by() }} "></i></a>
+						<p class="like-button-label">{{ recipe.likes|length }}</p>
 					</div>
 				</div>
 				<div id="description">
@@ -58,4 +58,9 @@
 		</div>
 		<div id="comments"></div>
 	</div>
+{% endblock %}
+
+{% block script %}
+	<script src="{{ url_for('static', filename='js/like.js') }}" charset="utf-8"></script>
+	<script src="{{ url_for('static', filename='js/star-score.js') }}" charset="utf-8"></script>
 {% endblock %}

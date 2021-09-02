@@ -17,7 +17,7 @@ def ingredient_new():
         return render_template('new_ingredient.html')
 
 
-@recipe_bp.route('ingredient/search/')
+@recipe_bp.route('/ingredient/search/')
 @recipe_bp.route('/ingredient/search/<string>/')
 def ingredient_search(string=None):
     if string is None:

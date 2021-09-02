@@ -2,6 +2,7 @@
 import datetime
 from flask_login import UserMixin
 from recipebox import db
+from flask_login import current_user
 from flask import current_app
 
 
@@ -41,6 +42,10 @@ class Like(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    def __init__(self, recipe_id, user_id):
+        self.recipe_id = recipe_id
+        self.user_id = user_id
 
 
 class Rating(db.Model):
