@@ -19,6 +19,7 @@ def recipe():
     return render_template('browse.html',
                            browse_items=selected_recipes,
                            courses=["Breakfast", "Lunch", "Dinner"],
+                           sorts=["Popular", "Cook Time (Fastest)", "Cook Time (Slowest)", "New -> Old", "Old -> New"],
                            ingredients=Ingredient.query.all())
 
 
@@ -41,9 +42,24 @@ def recipe_post():
         selected_recipes = [x for x in selected_recipes if search_term.lower() in x.name.lower()]
         print(selected_recipes)
 
+    # Sort recipes
+    sort_by = request.form.get('search-sort')
+    if sort_by and sort_by != "Sort By" and sort_by != "":
+        if sort_by == "Popular":
+            selected_recipes = sorted(selected_recipes, key=lambda x: x.num_likes(), reverse=True)
+        elif sort_by == "Cook Time (Fastest)":
+            selected_recipes = sorted(selected_recipes, key=lambda x: x.cook_time, reverse=False)
+        elif sort_by == "Cook Time (Slowest)":
+            selected_recipes = sorted(selected_recipes, key=lambda x: x.cook_time, reverse=True)
+        elif sort_by == "New -> Old":
+            pass
+        elif sort_by == "Old -> New":
+            pass
+
     return render_template('browse.html',
                            browse_items=selected_recipes,
                            courses=["Breakfast", "Lunch", "Dinner"],
+                           sorts=["Popular", "Cook Time (Fastest)", "Cook Time (Slowest)", "New -> Old", "Old -> New"],
                            ingredients=Ingredient.query.all()
                            )
 

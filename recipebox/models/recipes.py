@@ -42,7 +42,7 @@ class Ingredient(db.Model):
     def select(cls, query):
         if not query or not isinstance(query, str):
             raise ValueError("Missing query arg as a string")
-        ingredient = cls.query.filter(cls.name == query).first()
+        ingredient = cls.query.filter(cls.name.lower() == query.lower()).first()
         # If we managed to select an ingredient, return it
         if ingredient:
             return ingredient
@@ -102,6 +102,9 @@ class Recipe(db.Model):
             if like.user_id == user.id:
                 return True
         return False
+
+    def num_likes(self):
+        return len(self.likes)
 
 
 class RecipeIngredient(db.Model):
