@@ -1,6 +1,7 @@
 function addIngredient() {
     let recipeIngredients = document.getElementsByClassName("recipe-ingredients")[0]
     let clone = recipeIngredients.cloneNode(true)
+    generateDatalist(clone)
     document.getElementsByClassName('ingredients-parent')[0].appendChild(clone)
 }
 

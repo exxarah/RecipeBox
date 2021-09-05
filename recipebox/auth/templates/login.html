@@ -33,7 +33,8 @@
 				</div>
 			</div>
 			<br>
-			<input type="submit" id="submit" value="Login">
+			<input type="submit" class="btn" id="submit" value="Login">
 		</form>
+		<button class="btn" onclick="location.href='{{ url_for('auth_bp.register') }}'" type="button">Register Now</button>
 	</div>
 {% endblock %}

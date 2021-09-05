@@ -88,16 +88,20 @@ def recipe_new_post():
         cook_time=request.form["recipe_cooktime"]
     )
 
-    ingredient = Ingredient.select(request.form.getlist("recipe_ingredients[]")[0])
-
     for i in range(len(request.form.getlist("recipe_amount[]"))):
-        i = RecipeIngredient(
+        ingredient = Ingredient.select(request.form.getlist("recipe_ingredients[]")[i])
+        if ingredient is None:
+            ingredient = Ingredient(
+                request.form.getlist("recipe_ingredients[]")[i]
+            )
+            db.session.add(ingredient)
+        new_ingredient = RecipeIngredient(
             recipe=recipe.id,
             ingredient=ingredient.id,
             quantity=request.form.getlist("recipe_amount[]")[i],
             unit=request.form.getlist("recipe_unit[]")[i]
         )
-        recipe.ingredients.append(i)
+        recipe.ingredients.append(new_ingredient)
 
     for i in range(len(request.form.getlist("recipe_procedure[]"))):
         i = RecipeProcedure(

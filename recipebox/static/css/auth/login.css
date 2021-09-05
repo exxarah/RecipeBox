@@ -9,6 +9,10 @@
     color: #8e756a;
 }
 
+#centered-box > * {
+    width: 100%;
+}
+
 #big-logo {
     color: #8e756a;
     font-size: 50px;
