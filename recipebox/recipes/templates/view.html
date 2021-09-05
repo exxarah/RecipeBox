@@ -20,7 +20,7 @@
 				<div class="inline">
 					<div id="star-score">
 						{% for i in range(5) %}
-							<i class="fas fa-star {{ 'selected' if i < recipe.rating_score() }}"></i>
+							<i class="fas fa-star {{ 'selected' if i < recipe.rating_score() }}" data-score="{{ i }}"></i>
 						{% endfor %}
 						<p>({{ recipe.ratings|length }})</p>
 					</div>

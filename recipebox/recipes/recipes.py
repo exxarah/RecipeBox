@@ -60,6 +60,7 @@ def allowed_file(filename):
 
 
 @recipe_bp.route('/recipe/new/', methods=['POST'])
+@login_required
 def recipe_new_post():
     # Image validation first
     if 'recipe_image' not in request.files:
@@ -125,14 +126,11 @@ def recipe_view(id):
 
 @recipe_bp.route('/recipe/<id>/liked_by')
 def recipe_liked_by(id):
-    print("Running with ID", id)
     selected_recipe = Recipe.query.get(id)
     if selected_recipe.liked_by():
-        print("It was already liked!")
         like = Like.query.filter(Like.user_id == current_user.id and Like.recipe_id == id).first()
         db.session.delete(like)
     else:
-        print("It is not liked!")
         like = Like(
             recipe_id=id,
             user_id=current_user.id
