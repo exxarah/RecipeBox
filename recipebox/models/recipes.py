@@ -98,6 +98,8 @@ class Recipe(db.Model):
         return score
 
     def liked_by(self, user=current_user):
+        if not current_user.is_authenticated:
+            return False
         for like in self.likes:
             if like.user_id == user.id:
                 return True
